@@ -1,5 +1,6 @@
 import React from 'react';
-import { Scene, Router, Actions } from 'react-native-router-flux';
+import { Scene, Router } from 'react-native-router-flux';
+import StartScreen from './components/StartScreen';
 
 const RouterComponent = () => {
     return (
@@ -8,7 +9,7 @@ const RouterComponent = () => {
                 <Scene key='auth' initial>
                     <Scene
                         key='startScreen'
-                        component={startScreen}
+                        component={StartScreen}
                         // title='Logger'
                         hideNavBar
                     />

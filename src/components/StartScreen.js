@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View } from 'react-native';
-import { connect } from 'react-redux';
+import { Text } from 'react-native';
 import { Card, CardSection, Button } from './common';
 
 class StartScreen extends Component {
@@ -8,7 +7,7 @@ class StartScreen extends Component {
         return (
             <Card>
                 <CardSection>
-                    <Text style={{ fontSize: 40, color: 'black' }}></Text>
+                    <Text style={{ fontSize: 40, color: 'black' }}> 55 </Text>
                 </CardSection>
                 <CardSection>
                     <Button>start</Button>
@@ -17,3 +16,5 @@ class StartScreen extends Component {
         );
     }
 }
+export default StartScreen;
+
