@@ -13,7 +13,9 @@ const styles = {
         padding: 15,
         justifyContent: 'center',
         flexDirection: 'row',
-        position: 'relative'
+        position: 'relative',
+        backgroundColor: '#ff6666',
+        flex: 1
     }
 
 };

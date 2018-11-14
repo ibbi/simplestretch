@@ -1,13 +1,23 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { Text } from 'react-native';
-import { Card, CardSection, Button } from './common';
+import { Card, CardSection, Button, IncButton } from './common';
+import { incrementTime, decrementTime } from '../actions';
 
 class StartScreen extends Component {
+    timeAdded() {
+        this.props.incrementTime();
+    }
+    timeRemoved() {
+        this.props.decrementTime();
+    }
     render() {
         return (
             <Card>
                 <CardSection>
-                    <Text style={{ fontSize: 40, color: 'black' }}> 55 </Text>
+                    <IncButton OnPress={this.timeAdded.bind(this)} >-</IncButton>
+                    <Text style={{ alignSelf: 'center', fontSize: 100, color: 'black' }}> 55 </Text>
+                    <IncButton OnPress={this.timeRemoved.bind(this)}>+</IncButton>
                 </CardSection>
                 <CardSection>
                     <Button>start</Button>
@@ -16,5 +26,14 @@ class StartScreen extends Component {
         );
     }
 }
-export default StartScreen;
 
+const mapStateToProps = ({ start }) => {
+    return {
+        timer: start.timer
+    };
+};
+
+export default connect(mapStateToProps, {
+    incrementTime,
+    decrementTime
+})(StartScreen);

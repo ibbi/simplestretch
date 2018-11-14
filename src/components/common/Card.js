@@ -10,9 +10,9 @@ const Card = (props) => {
 
 const styles = {
     contStyle: {
-        justifyContent: 'center',
+        justifyContent: 'space-around',
         flex: 1,
-        backgroundColor: '#ff6666',
+        backgroundColor: 'white',
         elevation: 1
     }
 

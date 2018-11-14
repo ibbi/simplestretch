@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 
-const Button = (props) => {
+const IncButton = (props) => {
     const { children, onPress } = props;
     const { btnStyle, txtStyle } = styles;
     return (
@@ -15,7 +15,7 @@ const Button = (props) => {
 
 const styles = {
     btnStyle: {
-        backgroundColor: '#ff6666',
+        backgroundColor: '#ff0000',
         borderWidth: 0,
         flex: 1,
         alignSelf: 'stretch'
@@ -25,4 +25,4 @@ const styles = {
         alignSelf: 'center'
     }
 };
-export { Button };
+export { IncButton };
