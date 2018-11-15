@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Text, View, StyleSheet } from 'react-native';
+import { Actions } from 'react-native-router-flux';
 import { Card, CardSection, Button, IncButton } from './common';
 import { incrementTime, decrementTime } from '../actions';
 
@@ -20,6 +21,7 @@ class StartScreen extends Component {
                             style={{ paddingRight: 50 }}
                             onPress={this.timeRemoved.bind(this)}
                         >
+                            {console.log(this)}
                             -
                         </IncButton>
                         <IncButton
@@ -29,13 +31,16 @@ class StartScreen extends Component {
                             +
                         </IncButton>
                     </View>
-                    <View style={{ justifyContent: 'center' }}>
-                        <Text style={styles.startText}> {this.props.time} </Text>
+                    <View style={{ flexDirection: 'row', justifyContent: 'center', width: '50%', alignItems: 'center', backgroundColor: 'white' }}>
+                        <Text style={styles.startText}> {((this.props.time * 9) + this.props.time) / 60} </Text>
+                        <View style={{ backgroundColor: 'yellow', justifyContent: 'flex-end' }}>
+                            <Text style={styles.miniText}>m</Text>
+                        </View>
                     </View>
 
                 </CardSection>
                 <CardSection>
-                    <Button>start</Button>
+                    <Button onPress={() => Actions.stretchScreen()}>start</Button>
                 </CardSection>
             </Card >
         );
@@ -51,9 +56,11 @@ const styles = StyleSheet.create({
         width: '100%'
     },
     startText: {
-        alignSelf: 'center',
         fontSize: 100,
-        color: 'black'
+        color: 'black',
+    },
+    miniText: {
+        fontSize: 15
     }
 });
 

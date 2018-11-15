@@ -1,34 +1,30 @@
 import React from 'react';
 import { Scene, Router } from 'react-native-router-flux';
 import StartScreen from './components/StartScreen';
+import StretchScreen from './components/StretchScreen';
 
 const RouterComponent = () => {
     return (
-        <Router>
-            <Scene key='root' hideNavBar >
-                <Scene key='auth' initial>
-                    <Scene
-                        key='startScreen'
-                        component={StartScreen}
-                        // title='Logger'
-                        hideNavBar
-                    />
-                </Scene>
-                {/* <Scene key='main'>
-                    <Scene
-                        key='employeeList'
-                        component={EmployeeList}
-                        title='list of w2s'
-                        rightTitle='Add'
-                        onRight={() => Actions.employeeForm()}
-                        initial
-                    />
-                    <Scene
+        <Router navigationBarStyle={{ borderBottomWidth: 0, backgroundColor: '#ff6666' }}>
+            <Scene key='root' >
+                <Scene
+                    hideNavBar
+                    key='startScreen'
+                    component={StartScreen}
+                    // title='Logger'
+                    hideNavBar
+                    initial
+                />
+                <Scene
+                    key='stretchScreen'
+                    component={StretchScreen}
+                    title='list of w2s'
+                />
+                {/* <Scene
                         key='employeeForm'
                         component={EmployeeCreate}
                         title='create employee'
-                    />
-                </Scene> */}
+                    /> */}
             </Scene>
         </Router>
     );
