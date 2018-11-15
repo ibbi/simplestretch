@@ -10,7 +10,6 @@ const CardSection = (props) => {
 
 const styles = {
     contStyle: {
-        padding: 15,
         justifyContent: 'center',
         flexDirection: 'row',
         position: 'relative',

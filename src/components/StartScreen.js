@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Text } from 'react-native';
+import { Text, View } from 'react-native';
 import { Card, CardSection, Button, IncButton } from './common';
 import { incrementTime, decrementTime } from '../actions';
 
@@ -15,9 +15,14 @@ class StartScreen extends Component {
         return (
             <Card>
                 <CardSection>
-                    <IncButton OnPress={this.timeAdded.bind(this)} >-</IncButton>
-                    <Text style={{ alignSelf: 'center', fontSize: 100, color: 'black' }}> 55 </Text>
-                    <IncButton OnPress={this.timeRemoved.bind(this)}>+</IncButton>
+                    <View style={{ zIndex: 1, position: 'absolute', flexDirection: 'row', height: '100%', width: '100%' }}>
+                        <IncButton style={{ paddingRight: 50 }} onPress={this.timeRemoved.bind(this)} >-</IncButton>
+                        <IncButton style={{ paddingLeft: 50 }} onPress={this.timeAdded.bind(this)}>+</IncButton>
+                    </View>
+                    <View style={{ justifyContent: 'center' }}>
+                        <Text style={{ alignSelf: 'center', fontSize: 100, color: 'black' }}> {this.props.time} </Text>
+                    </View>
+
                 </CardSection>
                 <CardSection>
                     <Button>start</Button>
@@ -29,7 +34,7 @@ class StartScreen extends Component {
 
 const mapStateToProps = ({ start }) => {
     return {
-        timer: start.timer
+        time: start.time
     };
 };
 

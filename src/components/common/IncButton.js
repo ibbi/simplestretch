@@ -15,13 +15,12 @@ const IncButton = (props) => {
 
 const styles = {
     btnStyle: {
-        backgroundColor: '#ff0000',
         borderWidth: 0,
         flex: 1,
         alignSelf: 'stretch'
     },
     txtStyle: {
-        fontSize: 80,
+        fontSize: 100,
         alignSelf: 'center'
     }
 };
