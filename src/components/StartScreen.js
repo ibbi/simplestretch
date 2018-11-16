@@ -21,7 +21,6 @@ class StartScreen extends Component {
                             style={{ paddingRight: 50 }}
                             onPress={this.timeRemoved.bind(this)}
                         >
-                            {console.log(this)}
                             -
                         </IncButton>
                         <IncButton

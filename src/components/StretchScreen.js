@@ -12,6 +12,11 @@ class StretchScreen extends Component {
     stretchComplete() {
         this.props.nextStretch();
     }
+    renderTimer() {
+        if (this.props.restToggle_b) {
+            return (10);
+        } return (this.props.time);
+    }
     render() {
         return (
             <Card>
@@ -24,12 +29,10 @@ class StretchScreen extends Component {
                     <View style={{ justifyContent: 'center' }}>
 
                         <TimerCountdown
-                            initialSecondsRemaining={this.props.time * 1000}
+                            initialSecondsRemaining={this.renderTimer() * 1000}
                             onTimeElapsed={() => {
-                                console.log(this.props);
-                                this.restToggled();
                                 this.stretchComplete();
-                                console.log(this.props);
+                                this.restToggled();
                             }}
                             allowFontScaling
                             style={{ fontSize: 100 }}
