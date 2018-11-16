@@ -31,10 +31,32 @@ class StartScreen extends Component {
                             +
                         </IncButton>
                     </View>
-                    <View style={{ flexDirection: 'row', justifyContent: 'center', width: '50%', alignItems: 'center', backgroundColor: 'white' }}>
-                        <View style={{ flexDirection: 'row', flex: 1, backgroundColor: 'red', justifyContent: 'center' }}>
-                            <Text style={styles.startText}> {((this.props.time * 9) + this.props.time) / 60} </Text>
-                            <View style={{ backgroundColor: 'yellow', justifyContent: 'flex-end' }}>
+                    <View
+                        style={{
+                            flexDirection: 'row',
+                            justifyContent: 'center',
+                            width: '50%',
+                            alignItems: 'center',
+                            backgroundColor: 'white'
+                        }}
+                    >
+                        <View
+                            style={{
+                                flexDirection: 'row',
+                                flex: 1,
+                                backgroundColor: 'red',
+                                justifyContent: 'center'
+                            }}
+                        >
+                            <Text style={styles.startText}>
+                                {((this.props.time * 9) + this.props.time) / 60}
+                            </Text>
+                            <View
+                                style={{
+                                    backgroundColor: 'yellow',
+                                    justifyContent: 'flex-end'
+                                }}
+                            >
                                 <Text style={styles.miniText}>m</Text>
                             </View>
                         </View>

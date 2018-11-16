@@ -1,17 +1,21 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Text, View, StyleSheet, Image } from 'react-native';
+import { View, StyleSheet, Image } from 'react-native';
 import TimerCountdown from 'react-native-timer-countdown';
 import { CardSection, Card } from './common';
+import { toggleRestAction } from '../actions';
 
 class StretchScreen extends Component {
+    restToggled() {
+        console.log('resttoggled');
+        this.props.toggleRestAction();
+    }
     render() {
         return (
             <Card>
                 <CardSection style={{ backgroundColor: 'blue' }}>
                     <View style={{ justifyContent: 'center' }}>
                         <Image style={styles.stretchImg} source={{ uri: 'https://via.placeholder.com/300' }} />
-                        {console.log(this)}
                     </View>
                 </CardSection>
                 <CardSection>
@@ -19,7 +23,11 @@ class StretchScreen extends Component {
 
                         <TimerCountdown
                             initialSecondsRemaining={this.props.time * 1000}
-                            onTimeElapsed={() => console.log('complete')}
+                            onTimeElapsed={() => {
+                                console.log('insidetimer');
+                                this.restToggled();
+                                console.log('insidetimer');
+                            }}
                             allowFontScaling
                             style={{ fontSize: 100 }}
                         />
@@ -39,11 +47,12 @@ const styles = StyleSheet.create({
     },
 });
 
-const mapStateToProps = ({ start }) => {
+const mapStateToProps = ({ start, stretch }) => {
     return {
-        time: start.time
+        time: start.time,
+        restToggle_b: stretch.restToggle_b
     };
 };
 
-export default connect(mapStateToProps)(StretchScreen);
+export default connect(mapStateToProps, { toggleRestAction })(StretchScreen);
 

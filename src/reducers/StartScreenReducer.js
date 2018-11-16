@@ -1,6 +1,6 @@
 import { INCREMENT_TIME, DECREMENT_TIME } from '../actions/types';
 
-const INITIAL_STATE = { time: 30 };
+const INITIAL_STATE = { time: 3 };
 export default (state = INITIAL_STATE, action) => {
     switch (action.type) {
         case INCREMENT_TIME:
