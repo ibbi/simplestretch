@@ -58,7 +58,7 @@ const Timer = (props) => (
             props.stretchComplete();
             props.restToggled();
         }}
-        onTick={time => props.timeTicked(time)}
+        onTick={time => console.log(time)}
         allowFontScaling
         style={{ fontSize: 100 }}
     />
