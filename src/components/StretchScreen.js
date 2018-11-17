@@ -8,7 +8,7 @@ import FullScreenProgress from './common/FullScreenProgress';
 
 class StretchScreen extends Component {
     componentDidUpdate() {
-        console.log('tre');
+        console.log(this);
     }
     restToggled() {
         this.props.toggleRestAction();
@@ -37,7 +37,12 @@ class StretchScreen extends Component {
                 </CardSection>
                 <CardSection>
                     <View style={{ justifyContent: 'center' }}>
-                        <Timer things={this.props} />
+                        <Timer
+                            renderTimer={this.renderTimer.bind(this)}
+                            stretchComplete={this.stretchComplete.bind(this)}
+                            restToggled={this.restToggled.bind(this)}
+                            timeTicked={this.timeTicked}
+                        />
 
                     </View>
                 </CardSection>
