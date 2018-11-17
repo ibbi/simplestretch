@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { View, StyleSheet } from 'react-native';
+import { connect } from 'react-redux';
 
 class FullScreenProgress extends Component {
     render() {
+        console.log(this);
         return (
             <View style={{ width: '100%', height: '100%', position: 'absolute' }}>
 
@@ -33,4 +35,12 @@ const styles = StyleSheet.create({
     }
 });
 
-export { FullScreenProgress };
+const mapStateToProps = ({ start, stretch }) => {
+    return {
+        time: start.time,
+        restToggle_b: stretch.restToggle_b,
+        stretchId: stretch.stretchId
+    };
+};
+
+export default connect(mapStateToProps)(FullScreenProgress);

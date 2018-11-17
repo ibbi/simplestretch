@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { View, StyleSheet, Image } from 'react-native';
 import TimerCountdown from 'react-native-timer-countdown';
-import { CardSection, Card, FullScreenProgress } from './common';
-import { toggleRestAction, nextStretch } from '../actions';
+import { CardSection, Card } from './common';
+import { toggleRestAction, nextStretch, updateTimeRemaining } from '../actions';
+import FullScreenProgress from './common/FullScreenProgress';
 
 class StretchScreen extends Component {
     componentDidUpdate() {
@@ -15,12 +16,17 @@ class StretchScreen extends Component {
     stretchComplete() {
         this.props.nextStretch();
     }
+    timeTicked(time) {
+        this.props.updateTimeRemaining(time);
+    }
     renderTimer() {
         if (this.props.restToggle_b) {
             return (10);
         } return (this.props.time);
     }
+
     render() {
+        console.log(this.props);
         return (
             <Card>
                 <FullScreenProgress />
@@ -31,16 +37,8 @@ class StretchScreen extends Component {
                 </CardSection>
                 <CardSection>
                     <View style={{ justifyContent: 'center' }}>
+                        <Timer things={this.props} />
 
-                        <TimerCountdown
-                            initialSecondsRemaining={this.renderTimer() * 1000}
-                            onTimeElapsed={() => {
-                                this.stretchComplete();
-                                this.restToggled();
-                            }}
-                            allowFontScaling
-                            style={{ fontSize: 100 }}
-                        />
                     </View>
                 </CardSection>
             </Card>
@@ -48,6 +46,19 @@ class StretchScreen extends Component {
     }
 
 }
+const Timer = (props) => (
+    <TimerCountdown
+        initialSecondsRemaining={props.renderTimer() * 1000}
+        onTimeElapsed={() => {
+            props.stretchComplete();
+            props.restToggled();
+        }}
+        onTick={time => props.timeTicked(time)}
+        allowFontScaling
+        style={{ fontSize: 100 }}
+    />
+
+);
 const styles = StyleSheet.create({
 
     stretchImg: {
@@ -61,9 +72,14 @@ const mapStateToProps = ({ start, stretch }) => {
     return {
         time: start.time,
         restToggle_b: stretch.restToggle_b,
-        stretchId: stretch.stretchId
+        stretchId: stretch.stretchId,
+        timeRemaining: stretch.timeRemaining
     };
 };
 
-export default connect(mapStateToProps, { toggleRestAction, nextStretch })(StretchScreen);
+export default connect(mapStateToProps, {
+    toggleRestAction,
+    nextStretch,
+    updateTimeRemaining
+})(StretchScreen);
 
