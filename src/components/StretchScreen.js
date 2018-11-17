@@ -2,10 +2,13 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { View, StyleSheet, Image } from 'react-native';
 import TimerCountdown from 'react-native-timer-countdown';
-import { CardSection, Card } from './common';
+import { CardSection, Card, FullScreenProgress } from './common';
 import { toggleRestAction, nextStretch } from '../actions';
 
 class StretchScreen extends Component {
+    componentDidUpdate() {
+        console.log('tre');
+    }
     restToggled() {
         this.props.toggleRestAction();
     }
@@ -20,7 +23,8 @@ class StretchScreen extends Component {
     render() {
         return (
             <Card>
-                <CardSection style={{ backgroundColor: 'blue' }}>
+                <FullScreenProgress />
+                <CardSection>
                     <View style={{ justifyContent: 'center' }}>
                         <Image style={styles.stretchImg} source={{ uri: 'https://via.placeholder.com/300' }} />
                     </View>

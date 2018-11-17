@@ -15,7 +15,6 @@ const Button = (props) => {
 
 const styles = {
     btnStyle: {
-        backgroundColor: '#ff6666',
         borderWidth: 0,
         flex: 1,
         alignSelf: 'stretch'

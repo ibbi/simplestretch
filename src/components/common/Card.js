@@ -12,7 +12,7 @@ const styles = {
     contStyle: {
         justifyContent: 'space-around',
         flex: 1,
-        backgroundColor: 'white',
+        backgroundColor: '#ff6666',
         elevation: 1
     }
 

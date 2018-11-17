@@ -13,7 +13,6 @@ const styles = {
         justifyContent: 'center',
         flexDirection: 'row',
         position: 'relative',
-        backgroundColor: '#ff6666',
         flex: 1
     }
 
