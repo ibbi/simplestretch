@@ -16,7 +16,7 @@ class FullScreenProgress extends Component {
 
         Animated.timing(this.state.height, {
             toValue: endHeight,
-            duration: this.props.restToggle_b ? 30000 : 10000,
+            duration: this.props.restToggle_b ? this.props.time * 1000 : 10000,
             easing: Easing.linear
         }).start();
     }
