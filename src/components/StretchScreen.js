@@ -25,8 +25,9 @@ class StretchScreen extends Component {
         this.props.resetStretches();
     }
     decideNextMove() {
-        if (this.restToggle_b && (this.props.stretchId >= 8)) {
-            console.log('switch screen');
+        if (!this.props.restToggle_b && this.props.stretchId > 7) {
+            console.log('jenesequoi');
+            console.log(this.props);
             return () => Actions.startScreen();
         }
         console.log(this.props);
