@@ -9,8 +9,8 @@ import stretchList from './Stretches.json';
 import FullScreenProgress from './common/FullScreenProgress';
 
 class StretchScreen extends Component {
-    componentDidUpdate() {
-
+    componentWillMount() {
+        this.resetState();
     }
     restToggled() {
         this.props.toggleRestAction();
@@ -21,7 +21,7 @@ class StretchScreen extends Component {
     timeTicked(time) {
         this.props.updateTimeRemaining(time);
     }
-    backButtonPressed() {
+    resetState() {
         console.log('wow');
         this.props.resetStretches();
     }
@@ -54,8 +54,7 @@ class StretchScreen extends Component {
                                 Actions.refresh({
                                     title: this.props.restToggle_b ?
                                         `Next: ${stretchList[this.props.stretchId].name}` :
-                                        `${stretchList[this.props.stretchId].name}`,
-                                    onExit: () => { console.log('lit'); }
+                                        `${stretchList[this.props.stretchId].name}`
                                 });
                             }}
                             allowFontScaling
