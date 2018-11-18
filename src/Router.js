@@ -18,7 +18,6 @@ const RouterComponent = () => {
                     key='stretchScreen'
                     component={StretchScreen}
                     title='list of w2s'
-                    onExit={() => console.log('mam')}
                 />
                 {/* <Scene
                         key='employeeForm'

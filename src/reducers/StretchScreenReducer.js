@@ -13,7 +13,6 @@ export default (state = INITIAL_STATE, action) => {
             }
             return { ...state };
         case RESET_STRETCHES:
-            console.log('reduce');
             return { ...state, ...INITIAL_STATE };
         default:
             return state;

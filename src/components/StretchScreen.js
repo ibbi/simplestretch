@@ -22,17 +22,30 @@ class StretchScreen extends Component {
         this.props.updateTimeRemaining(time);
     }
     resetState() {
-        console.log('wow');
         this.props.resetStretches();
+    }
+    decideNextMove() {
+        if (this.restToggle_b && (this.props.stretchId >= 8)) {
+            console.log('switch screen');
+            return () => Actions.startScreen();
+        }
+        console.log(this.props);
+        return () => {
+            this.stretchComplete();
+            this.restToggled();
+            Actions.refresh({
+                title: this.props.restToggle_b ?
+                    `Next: ${stretchList[this.props.stretchId].name}` :
+                    `${stretchList[this.props.stretchId].name}`
+            });
+        };
     }
     renderTimer() {
         if (this.props.restToggle_b) {
             return (10);
         } return (this.props.time);
     }
-
     render() {
-        console.log(this);
         return (
             <Card>
                 <FullScreenProgress />
@@ -48,15 +61,7 @@ class StretchScreen extends Component {
                     <View style={{ justifyContent: 'center' }}>
                         <TimerCountdown
                             initialSecondsRemaining={this.renderTimer() * 1000}
-                            onTimeElapsed={() => {
-                                this.stretchComplete();
-                                this.restToggled();
-                                Actions.refresh({
-                                    title: this.props.restToggle_b ?
-                                        `Next: ${stretchList[this.props.stretchId].name}` :
-                                        `${stretchList[this.props.stretchId].name}`
-                                });
-                            }}
+                            onTimeElapsed={this.decideNextMove()}
                             allowFontScaling
                             style={{ fontSize: 100 }}
                         />
