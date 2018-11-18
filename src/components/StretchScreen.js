@@ -26,12 +26,8 @@ class StretchScreen extends Component {
     }
     decideNextMove() {
         if (!this.props.restToggle_b && this.props.stretchId > 7) {
-            console.log('jenesequoi');
-            console.log(this.props);
-            return () => Actions.startScreen();
-        }
-        console.log(this.props);
-        return () => {
+            return () => Actions.endScreen();
+        } return () => {
             this.stretchComplete();
             this.restToggled();
             Actions.refresh({
