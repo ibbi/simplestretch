@@ -1,4 +1,4 @@
-import { NEXT_STRETCH, TOGGLE_REST, UPDATE_TIME_REMAINING } from './types';
+import { NEXT_STRETCH, TOGGLE_REST, RESET_STRETCHES } from './types';
 
 
 export const nextStretch = () => {
@@ -11,9 +11,9 @@ export const toggleRestAction = () => {
         type: TOGGLE_REST
     };
 };
-export const updateTimeRemaining = (time) => {
+export const resetStretches = () => {
     return {
-        type: UPDATE_TIME_REMAINING,
-        payload: time
+        type: RESET_STRETCHES
     };
 };
+

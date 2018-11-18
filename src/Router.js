@@ -12,14 +12,13 @@ const RouterComponent = () => {
                     key='startScreen'
                     component={StartScreen}
                     // title='Logger'
-                    hideNavBar
                     initial
                 />
                 <Scene
                     key='stretchScreen'
                     component={StretchScreen}
                     title='list of w2s'
-                    onLeft
+                    onExit={() => console.log('mam')}
                 />
                 {/* <Scene
                         key='employeeForm'

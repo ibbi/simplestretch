@@ -4,7 +4,7 @@ import { View, StyleSheet, Image } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import TimerCountdown from 'react-native-timer-countdown';
 import { CardSection, Card } from './common';
-import { toggleRestAction, nextStretch, updateTimeRemaining } from '../actions';
+import { toggleRestAction, nextStretch, resetStretches } from '../actions';
 import stretchList from './Stretches.json';
 import FullScreenProgress from './common/FullScreenProgress';
 
@@ -21,6 +21,10 @@ class StretchScreen extends Component {
     timeTicked(time) {
         this.props.updateTimeRemaining(time);
     }
+    backButtonPressed() {
+        console.log('wow');
+        this.props.resetStretches();
+    }
     renderTimer() {
         if (this.props.restToggle_b) {
             return (10);
@@ -28,6 +32,7 @@ class StretchScreen extends Component {
     }
 
     render() {
+        console.log(this);
         return (
             <Card>
                 <FullScreenProgress />
@@ -49,7 +54,8 @@ class StretchScreen extends Component {
                                 Actions.refresh({
                                     title: this.props.restToggle_b ?
                                         `Next: ${stretchList[this.props.stretchId].name}` :
-                                        `${stretchList[this.props.stretchId].name}`
+                                        `${stretchList[this.props.stretchId].name}`,
+                                    onExit: () => { console.log('lit'); }
                                 });
                             }}
                             allowFontScaling
@@ -77,14 +83,13 @@ const mapStateToProps = ({ start, stretch }) => {
     return {
         time: start.time,
         restToggle_b: stretch.restToggle_b,
-        stretchId: stretch.stretchId,
-        timeRemaining: stretch.timeRemaining
+        stretchId: stretch.stretchId
     };
 };
 
 export default connect(mapStateToProps, {
     toggleRestAction,
     nextStretch,
-    updateTimeRemaining
+    resetStretches
 })(StretchScreen);
 
