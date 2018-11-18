@@ -5,11 +5,12 @@ import { Actions } from 'react-native-router-flux';
 import TimerCountdown from 'react-native-timer-countdown';
 import { CardSection, Card } from './common';
 import { toggleRestAction, nextStretch, updateTimeRemaining } from '../actions';
+import stretchList from './Stretches.json';
 import FullScreenProgress from './common/FullScreenProgress';
 
 class StretchScreen extends Component {
     componentDidUpdate() {
-        console.log(this);
+
     }
     restToggled() {
         this.props.toggleRestAction();
@@ -32,7 +33,10 @@ class StretchScreen extends Component {
                 <FullScreenProgress />
                 <CardSection>
                     <View style={{ justifyContent: 'center' }}>
-                        <Image style={styles.stretchImg} source={{ uri: 'https://via.placeholder.com/300' }} />
+                        <Image
+                            style={styles.stretchImg}
+                            source={{ uri: `${stretchList[this.props.stretchId].img}` }}
+                        />
                     </View>
                 </CardSection>
                 <CardSection>
@@ -44,11 +48,10 @@ class StretchScreen extends Component {
                                 this.restToggled();
                                 Actions.refresh({
                                     title: this.props.restToggle_b ?
-                                        `next: stretch number ${this.props.stretchId}` :
-                                        `stretch number ${this.props.stretchId}`
+                                        `Next: ${stretchList[this.props.stretchId].name}` :
+                                        `${stretchList[this.props.stretchId].name}`
                                 });
                             }}
-                            onTick={time => console.log(time)}
                             allowFontScaling
                             style={{ fontSize: 100 }}
                         />

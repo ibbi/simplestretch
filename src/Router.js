@@ -19,6 +19,7 @@ const RouterComponent = () => {
                     key='stretchScreen'
                     component={StretchScreen}
                     title='list of w2s'
+                    onLeft
                 />
                 {/* <Scene
                         key='employeeForm'

@@ -1,46 +1,37 @@
 [
     {
-        "id": 0,
         "name": "Shoulder Extension",
         "img": "https://via.placeholder.com/300"
     },
     {
-        "id": 1,
-        "name": "Underarm Shoulder Stretch",
+        "name": "Underarm Shoulder",
         "img": "https://via.placeholder.com/290"
     },
     {
-        "id": 2,
         "name": "Rear Hand Clasp",
         "img": "https://via.placeholder.com/280"
     },
     {
-        "id": 3,
         "name": "Full Squat",
         "img": "https://via.placeholder.com/270"
     },
     {
-        "id": 4,
         "name": "Standing Pike",
         "img": "https://via.placeholder.com/260"
     },
     {
-        "id": 5,
         "name": "Kneeling Lunge",
         "img": "https://via.placeholder.com/250"
     },
     {
-        "id": 6,
         "name": "Butterfly",
         "img": "https://via.placeholder.com/240"
     },
     {
-        "id": 7,
         "name": "Backbend",
         "img": "https://via.placeholder.com/230"
     },
     {
-        "id": 8,
         "name": "Lying Twist",
         "img": "https://via.placeholder.com/220"
     }

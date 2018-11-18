@@ -12,7 +12,6 @@ class FullScreenProgress extends Component {
     }
     toggleHeight() {
         const endHeight = this.props.restToggle_b ? 0 : 100;
-        console.log('yooho');
 
         Animated.timing(this.state.height, {
             toValue: endHeight,
@@ -21,7 +20,6 @@ class FullScreenProgress extends Component {
         }).start();
     }
     render() {
-        console.log(this);
         return (
             <View style={{ width: '100%', height: '100%', position: 'absolute' }}>
 
@@ -47,12 +45,12 @@ const styles = StyleSheet.create({
         position: 'absolute',
         height: '100%',
         width: '100%',
-        backgroundColor: 'yellow'
+        backgroundColor: '#ff9696'
     },
     pBarTop: {
         position: 'absolute',
         width: '100%',
-        backgroundColor: 'pink'
+        backgroundColor: '#ff6666'
     }
 });
 
