@@ -7,12 +7,12 @@ export default (state = INITIAL_STATE, action) => {
             if (state.time < 120) {
                 return { ...state, time: state.time + 30 };
             }
-            return { state };
+            return { ...state, time: 120 };
         case DECREMENT_TIME:
             if (state.time > 30) {
                 return { ...state, time: state.time - 30 };
             }
-            return { state };
+            return { ...state, time: 30 };
         default:
             return state;
     }

@@ -26,7 +26,6 @@ class StretchScreen extends Component {
     }
 
     render() {
-        console.log(this.props);
         return (
             <Card>
                 <FullScreenProgress />
@@ -37,11 +36,15 @@ class StretchScreen extends Component {
                 </CardSection>
                 <CardSection>
                     <View style={{ justifyContent: 'center' }}>
-                        <Timer
-                            renderTimer={this.renderTimer.bind(this)}
-                            stretchComplete={this.stretchComplete.bind(this)}
-                            restToggled={this.restToggled.bind(this)}
-                            timeTicked={this.timeTicked}
+                        <TimerCountdown
+                            initialSecondsRemaining={this.renderTimer() * 1000}
+                            onTimeElapsed={() => {
+                                this.stretchComplete();
+                                this.restToggled();
+                            }}
+                            onTick={time => console.log(time)}
+                            allowFontScaling
+                            style={{ fontSize: 100 }}
                         />
 
                     </View>
@@ -51,19 +54,7 @@ class StretchScreen extends Component {
     }
 
 }
-const Timer = (props) => (
-    <TimerCountdown
-        initialSecondsRemaining={props.renderTimer() * 1000}
-        onTimeElapsed={() => {
-            props.stretchComplete();
-            props.restToggled();
-        }}
-        onTick={time => console.log(time)}
-        allowFontScaling
-        style={{ fontSize: 100 }}
-    />
 
-);
 const styles = StyleSheet.create({
 
     stretchImg: {

@@ -1,6 +1,6 @@
 import { TOGGLE_REST, NEXT_STRETCH, UPDATE_TIME_REMAINING } from '../actions/types';
 
-const INITIAL_STATE = { restToggle_b: true, stretchId: 0, timeRemaining: 30 };
+const INITIAL_STATE = { restToggle_b: true, stretchId: 0, timeRemaining: 10000 };
 export default (state = INITIAL_STATE, action) => {
     switch (action.type) {
         case TOGGLE_REST:
@@ -13,8 +13,8 @@ export default (state = INITIAL_STATE, action) => {
             }
             return { ...state };
         case UPDATE_TIME_REMAINING:
+            console.log(action.payload);
             return { ...state, timeRemaining: action.payload };
-
         default:
             return state;
     }
