@@ -13,7 +13,6 @@ export default (state = INITIAL_STATE, action) => {
             }
             return { ...state };
         case UPDATE_TIME_REMAINING:
-            console.log(action.payload);
             return { ...state, timeRemaining: action.payload };
         default:
             return state;

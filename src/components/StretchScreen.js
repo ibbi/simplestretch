@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { View, StyleSheet, Image } from 'react-native';
+import { Actions } from 'react-native-router-flux';
 import TimerCountdown from 'react-native-timer-countdown';
 import { CardSection, Card } from './common';
 import { toggleRestAction, nextStretch, updateTimeRemaining } from '../actions';
@@ -41,6 +42,11 @@ class StretchScreen extends Component {
                             onTimeElapsed={() => {
                                 this.stretchComplete();
                                 this.restToggled();
+                                Actions.refresh({
+                                    title: this.props.restToggle_b ?
+                                        `next: stretch number ${this.props.stretchId}` :
+                                        `stretch number ${this.props.stretchId}`
+                                });
                             }}
                             onTick={time => console.log(time)}
                             allowFontScaling
