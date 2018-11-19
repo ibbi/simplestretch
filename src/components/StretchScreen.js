@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { View, StyleSheet, Image } from 'react-native';
-import { Sound } from 'react-native-sound';
+import Sound from 'react-native-sound';
 import { Actions } from 'react-native-router-flux';
 import TimerCountdown from 'react-native-timer-countdown';
 import { CardSection, Card } from './common';
@@ -26,6 +26,7 @@ class StretchScreen extends Component {
         this.props.resetStretches();
     }
     decideNextMove() {
+        beep.play();
         if (!this.props.restToggle_b && this.props.stretchId > 7) {
             return () => Actions.endScreen();
         } return () => {
@@ -88,15 +89,13 @@ const mapStateToProps = ({ start, stretch }) => {
         stretchId: stretch.stretchId
     };
 };
-const beep = new Sound('../design_resources/beep.mp3', null, (error) => {
+const beep = new Sound('beep.mp3', Sound.MAIN_BUNDLE, (error) => {
     if (error) {
-        console.log('youch');
+        console.log('failed to load the sound', error);
+        return;
     }
-
-    // play when loaded
-    beep.play();
+    // loaded successfully
 });
-
 const stretchList = [
     {
         name: 'Shoulder Extension',
