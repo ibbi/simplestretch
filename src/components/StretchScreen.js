@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { View, StyleSheet, Image } from 'react-native';
+import { Sound } from 'react-native-sound';
 import { Actions } from 'react-native-router-flux';
 import TimerCountdown from 'react-native-timer-countdown';
 import { CardSection, Card } from './common';
 import { toggleRestAction, nextStretch, resetStretches } from '../actions';
-import stretchList from './Stretches.json';
+// import stretchList from './Stretches.json';
 import FullScreenProgress from './common/FullScreenProgress';
 
 class StretchScreen extends Component {
@@ -50,7 +51,7 @@ class StretchScreen extends Component {
                     <View style={{ justifyContent: 'center' }}>
                         <Image
                             style={styles.stretchImg}
-                            source={{ uri: `${stretchList[this.props.stretchId].img}` }}
+                            source={stretchList[this.props.stretchId].img}
                         />
                     </View>
                 </CardSection>
@@ -87,6 +88,53 @@ const mapStateToProps = ({ start, stretch }) => {
         stretchId: stretch.stretchId
     };
 };
+const beep = new Sound('../design_resources/beep.mp3', null, (error) => {
+    if (error) {
+        console.log('youch');
+    }
+
+    // play when loaded
+    beep.play();
+});
+
+const stretchList = [
+    {
+        name: 'Shoulder Extension',
+        img: require('../design_resources/stretch0.png')
+    },
+    {
+        name: 'Underarm Shoulder Stretch',
+        img: require('../design_resources/stretch1.png')
+    },
+    {
+        name: 'Rear Hand Clasp',
+        img: require('../design_resources/stretch2.png')
+    },
+    {
+        name: 'Full Squat',
+        img: require('../design_resources/stretch3.png')
+    },
+    {
+        name: 'Standing Pike',
+        img: require('../design_resources/stretch4.png')
+    },
+    {
+        name: 'Kneeling Lunge',
+        img: require('../design_resources/stretch5.png')
+    },
+    {
+        name: 'Butterfly',
+        img: require('../design_resources/stretch6.png')
+    },
+    {
+        name: 'Backbend',
+        img: require('../design_resources/stretch7.png')
+    },
+    {
+        name: 'Lying Twist',
+        img: require('../design_resources/stretch8.png')
+    }
+];
 
 export default connect(mapStateToProps, {
     toggleRestAction,
