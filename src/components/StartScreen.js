@@ -35,29 +35,26 @@ class StartScreen extends Component {
                             flexDirection: 'row',
                             justifyContent: 'center',
                             width: '50%',
-                            alignItems: 'center',
-                            backgroundColor: 'white'
+                            alignItems: 'center'
                         }}
                     >
                         <View
                             style={{
-                                flexDirection: 'row',
                                 flex: 1,
-                                backgroundColor: 'red',
                                 justifyContent: 'center'
                             }}
                         >
                             <Text style={styles.startText}>
                                 {((this.props.time * 9) + this.props.time) / 60}
                             </Text>
-                            <View
+                            {/* <View
                                 style={{
                                     backgroundColor: 'yellow',
-                                    justifyContent: 'flex-end'
+                                    justifyContent: 'center'
                                 }}
-                            >
-                                <Text style={styles.miniText}>m</Text>
-                            </View>
+                            > */}
+                            <Text style={styles.miniText}>minutes</Text>
+                            {/* </View> */}
                         </View>
                     </View>
 
@@ -80,13 +77,12 @@ const styles = StyleSheet.create({
     },
     startText: {
         fontSize: 100,
-        color: 'black',
-        width: 138,
-        backgroundColor: 'pink',
-        textAlign: 'right'
+        textAlign: 'center'
     },
     miniText: {
-        fontSize: 15
+        fontSize: 15,
+        textAlign: 'center',
+        marginTop: -15
     }
 });
 
