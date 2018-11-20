@@ -19,9 +19,6 @@ class StretchScreen extends Component {
     stretchComplete() {
         this.props.nextStretch();
     }
-    timeTicked(time) {
-        this.props.updateTimeRemaining(time);
-    }
     resetState() {
         this.props.resetStretches();
     }
