@@ -27,8 +27,10 @@ class StretchScreen extends Component {
     }
     decideNextMove() {
         beep.play();
-        if (!this.props.restToggle_b && this.props.stretchId > 7) {
-            return () => Actions.endScreen();
+        if (!this.props.restToggle_b && this.props.stretchId > 10) {
+            setTimeout(() => {
+                return () => Actions.endScreen();
+            }, 1000);
         } return () => {
             this.stretchComplete();
             this.restToggled();
@@ -107,7 +109,11 @@ const stretchList = [
     },
     {
         name: 'Rear Hand Clasp',
-        img: require('../design_resources/stretch2.png')
+        img: require('../design_resources/stretch2a.png')
+    },
+    {
+        name: 'Rear Hand Clasp',
+        img: require('../design_resources/stretch2b.png')
     },
     {
         name: 'Full Squat',
@@ -119,7 +125,11 @@ const stretchList = [
     },
     {
         name: 'Kneeling Lunge',
-        img: require('../design_resources/stretch5.png')
+        img: require('../design_resources/stretch5a.png')
+    },
+    {
+        name: 'Kneeling Lunge',
+        img: require('../design_resources/stretch5b.png')
     },
     {
         name: 'Butterfly',
@@ -131,7 +141,11 @@ const stretchList = [
     },
     {
         name: 'Lying Twist',
-        img: require('../design_resources/stretch8.png')
+        img: require('../design_resources/stretch8a.png')
+    },
+    {
+        name: 'Lying Twist',
+        img: require('../design_resources/stretch8b.png')
     }
 ];
 

@@ -18,13 +18,12 @@ const RouterComponent = () => {
                 <Scene
                     key='stretchScreen'
                     component={StretchScreen}
-                    title='list of w2s'
+                    title='Next: Shoulder Extension'
                 />
                 <Scene
                     hideNavBar
                     key='endScreen'
                     component={EndScreen}
-                    title='gj nerd'
                 />
                 {/* <Scene
                         key='employeeForm'
