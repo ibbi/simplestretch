@@ -15,7 +15,7 @@ export default (state = INITIAL_STATE, action) => {
         case RESET_STRETCHES:
             return { ...state, ...INITIAL_STATE };
         default:
-            return state;
+            return { ...state };
     }
 };
 

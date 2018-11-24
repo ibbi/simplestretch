@@ -12,7 +12,6 @@ const RouterComponent = () => {
                     hideNavBar
                     key='startScreen'
                     component={StartScreen}
-                    // title='Logger'
                     initial
                 />
                 <Scene

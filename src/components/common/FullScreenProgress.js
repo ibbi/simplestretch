@@ -57,8 +57,7 @@ const styles = StyleSheet.create({
 const mapStateToProps = ({ start, stretch }) => {
     return {
         time: start.time,
-        restToggle_b: stretch.restToggle_b,
-        stretchId: stretch.stretchId
+        restToggle_b: stretch.restToggle_b
     };
 };
 
