@@ -5,13 +5,13 @@ import { connect } from 'react-redux';
 class FullScreenProgress extends Component {
     constructor(props) {
         super(props);
-        this.state = { height: new Animated.Value(this.props.restToggle_b ? 100 : 0) };
+        this.state = { height: new Animated.Value(this.props.restToggle_b ? 0 : 100) };
     }
     componentWillUpdate() {
         this.toggleHeight();
     }
     toggleHeight() {
-        const endHeight = this.props.restToggle_b ? 0 : 100;
+        const endHeight = this.props.restToggle_b ? 100 : 0;
 
         Animated.timing(this.state.height, {
             toValue: endHeight,
@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
         position: 'absolute',
         height: '100%',
         width: '100%',
-        backgroundColor: '#ff9696'
+        backgroundColor: '#ffff66'
     },
     pBarTop: {
         position: 'absolute',
