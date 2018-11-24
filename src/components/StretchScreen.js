@@ -25,7 +25,7 @@ class StretchScreen extends Component {
     decideNextMove() {
         beep.play();
         if (!this.props.restToggle_b && this.props.stretchId > 10) {
-            return () => Actions.endScreen();
+            return () => Actions.replace('endScreen');
         } return () => {
             this.stretchComplete();
             this.restToggled();
