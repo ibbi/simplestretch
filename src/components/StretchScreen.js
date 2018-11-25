@@ -4,7 +4,7 @@ import { View, StyleSheet, Image } from 'react-native';
 import Sound from 'react-native-sound';
 import { Actions } from 'react-native-router-flux';
 import TimerCountdown from 'react-native-timer-countdown';
-import { CardSection, Card } from './common';
+import { CardSection, Card, Button } from './common';
 import { toggleRestAction, nextStretch, resetStretches } from '../actions';
 // import stretchList from './Stretches.json';
 import FullScreenProgress from './common/FullScreenProgress';
@@ -64,6 +64,13 @@ class StretchScreen extends Component {
 
                     </View>
                 </CardSection>
+                <Button
+                    style={{
+                        position: 'absolute',
+                        height: '100%',
+                        width: '100%'
+                    }}
+                > ? </Button>
             </Card>
         );
     }
