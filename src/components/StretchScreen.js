@@ -6,7 +6,6 @@ import { Actions } from 'react-native-router-flux';
 import TimerCountdown from 'react-native-timer-countdown';
 import { CardSection, Card, Button } from './common';
 import { toggleRestAction, nextStretch, resetStretches } from '../actions';
-// import stretchList from './Stretches.json';
 import FullScreenProgress from './common/FullScreenProgress';
 
 class StretchScreen extends Component {

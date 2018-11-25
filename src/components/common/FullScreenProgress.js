@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 class FullScreenProgress extends Component {
     constructor(props) {
         super(props);
-        console.log('constructor', this);
         this.state = { height: new Animated.Value(100) };
     }
     componentWillMount() {
