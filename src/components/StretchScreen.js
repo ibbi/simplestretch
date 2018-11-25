@@ -5,6 +5,7 @@ import Sound from 'react-native-sound';
 import { Actions } from 'react-native-router-flux';
 import TimerCountdown from 'react-native-timer-countdown';
 import { CardSection, Card, Button } from './common';
+import { stretchList } from './StretchList';
 import { toggleRestAction, nextStretch, resetStretches } from '../actions';
 import FullScreenProgress from './common/FullScreenProgress';
 
@@ -99,56 +100,6 @@ const beep = new Sound('beep.mp3', Sound.MAIN_BUNDLE, (error) => {
     }
     // loaded successfully
 });
-const stretchList = [
-    {
-        name: 'Shoulder Extension',
-        img: require('../design_resources/stretch0.png')
-    },
-    {
-        name: 'Underarm Shoulder Stretch',
-        img: require('../design_resources/stretch1.png')
-    },
-    {
-        name: 'Rear Hand Clasp',
-        img: require('../design_resources/stretch2a.png')
-    },
-    {
-        name: 'Rear Hand Clasp',
-        img: require('../design_resources/stretch2b.png')
-    },
-    {
-        name: 'Full Squat',
-        img: require('../design_resources/stretch3.png')
-    },
-    {
-        name: 'Standing Pike',
-        img: require('../design_resources/stretch4.png')
-    },
-    {
-        name: 'Kneeling Lunge',
-        img: require('../design_resources/stretch5a.png')
-    },
-    {
-        name: 'Kneeling Lunge',
-        img: require('../design_resources/stretch5b.png')
-    },
-    {
-        name: 'Butterfly',
-        img: require('../design_resources/stretch6.png')
-    },
-    {
-        name: 'Backbend',
-        img: require('../design_resources/stretch7.png')
-    },
-    {
-        name: 'Lying Twist',
-        img: require('../design_resources/stretch8a.png')
-    },
-    {
-        name: 'Lying Twist',
-        img: require('../design_resources/stretch8b.png')
-    }
-];
 
 export default connect(mapStateToProps, {
     toggleRestAction,
