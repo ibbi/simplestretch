@@ -77,14 +77,16 @@ class StretchScreen extends Component {
                     visible={this.state.modalVisible}
                     onRequestClose={() => { console.log('Modal has been closed.'); }}
                 >
-                    <Text>{`${stretchList[this.props.stretchId].desc}`}</Text>
-                    <Button
-                        onPress={() => {
-                            this.setModalVisible(!this.state.modalVisible);
-                        }}
-                    >
-                        <Text>X</Text>
-                    </Button>
+                    <View style={styles.modalDesc}>
+                        <Text style={styles.modalText}>{`${stretchList[this.props.stretchId].desc}`}</Text>
+                        <Button
+                            onPress={() => {
+                                this.setModalVisible(!this.state.modalVisible);
+                            }}
+                        >
+                            <Text>X</Text>
+                        </Button>
+                    </View>
                 </Modal>
                 <CardSection>
                     <View style={{ justifyContent: 'center' }}>
@@ -122,6 +124,16 @@ const styles = StyleSheet.create({
         height: 300,
         margin: 5
     },
+    modalDesc: {
+        flex: 1,
+        padding: 20,
+        backgroundColor: '#ff6666',
+        justifyContent: 'space-around'
+    },
+    modalText: {
+        fontSize: 15,
+        textAlign: 'center'
+    }
 });
 
 const mapStateToProps = ({ start, stretch }) => {

@@ -2,12 +2,12 @@ export const stretchList = [
     {
         name: 'Shoulder Extension',
         img: require('../design_resources/stretch0.png'),
-        desc: 'Place your hands on some object that is overhead, while keeping your arms straight. You may bend forward to an object, as long as it is still "overhead". Attempt to push your head and chest through so that the arms are pressed behind the body.'
+        desc: 'Place your hands on some object that is overhead, while keeping your arms straight. You may bend forward to an object, as long as it is still "overhead". Attempt to push your head and chest through so that the arms are pressed behind the body.\n\nBeginner: As above, with palms facing down\n\nIntermediate: Place your elbows on the object and bring the hands together as it you were praying.\n\nAdvanced: Rotate the palms facing upward.Holding a stick might be useful to help keep the hands from rotating.Alternatively, a dead hang from a bar in a chinup grip might be used.'
     },
     {
         name: 'Underarm Shoulder Stretch',
         img: require('../design_resources/stretch1.png'),
-        desc: 'While seated, place your hands behind you on the ground, fingers pointing away, and slide your butt forward, keeping the arms straight. This can also be done by placing your hands behind you on a tall object, and squatting/crouching down.'
+        desc: 'While seated, place your hands behind you on the ground, fingers pointing away, and slide your butt forward, keeping the arms straight. This can also be done by placing your hands behind you on a tall object, and squatting/crouching down.\n\nBeginner: As above, keeping hands on the ground, approximately shoulder width.\n\nIntermediate: Use a stick or resistance band to keep arms narrower than shoulder width.\n\nAdvanced: Do this while hanging from a bar.Also known as a "German Hang"'
     },
     {
         name: 'Rear Hand Clasp',
