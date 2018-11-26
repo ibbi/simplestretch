@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 class FullScreenProgress extends Component {
     constructor(props) {
         super(props);
-        this.state = { height: new Animated.Value(100) };
+        this.state = { height: new Animated.Value(this.props.restToggle_b ? 100 : 0) };
     }
     componentWillMount() {
         this.toggleHeight();

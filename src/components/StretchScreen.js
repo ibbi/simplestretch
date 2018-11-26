@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { View, StyleSheet, Image } from 'react-native';
+import { View, StyleSheet, Image, Modal, Text } from 'react-native';
 import Sound from 'react-native-sound';
 import { Actions } from 'react-native-router-flux';
 import TimerCountdown from 'react-native-timer-countdown';
@@ -10,8 +10,15 @@ import { toggleRestAction, nextStretch, resetStretches } from '../actions';
 import FullScreenProgress from './common/FullScreenProgress';
 
 class StretchScreen extends Component {
+    state = {
+        modalVisible: false,
+        resetTimer: 1
+    };
     componentWillMount() {
         this.resetState();
+    }
+    setModalVisible(visible) {
+        this.setState({ modalVisible: visible });
     }
     restToggled() {
         this.props.toggleRestAction();
@@ -36,15 +43,49 @@ class StretchScreen extends Component {
             });
         };
     }
-    renderTimer() {
+    decideSecondsRemaining() {
         if (this.props.restToggle_b) {
             return (10);
         } return (this.props.time);
     }
+    renderTimer() {
+        if (this.state.modalVisible) {
+            return;
+        } return (
+            <TimerCountdown
+                initialSecondsRemaining={this.decideSecondsRemaining() * 1000}
+                onTimeElapsed={this.decideNextMove()}
+                allowFontScaling
+                style={{ fontSize: 100 }}
+            />
+        );
+    }
+    renderProgressBar() {
+        if (this.state.modalVisible) {
+            return;
+        } return (
+            <FullScreenProgress />
+
+        );
+    }
     render() {
         return (
             <Card>
-                <FullScreenProgress />
+                {this.renderProgressBar()}
+                <Modal
+                    animationType={'slide'} transparent={false}
+                    visible={this.state.modalVisible}
+                    onRequestClose={() => { console.log('Modal has been closed.'); }}
+                >
+                    <Text>{`${stretchList[this.props.stretchId].desc}`}</Text>
+                    <Button
+                        onPress={() => {
+                            this.setModalVisible(!this.state.modalVisible);
+                        }}
+                    >
+                        <Text>X</Text>
+                    </Button>
+                </Modal>
                 <CardSection>
                     <View style={{ justifyContent: 'center' }}>
                         <Image
@@ -55,16 +96,13 @@ class StretchScreen extends Component {
                 </CardSection>
                 <CardSection>
                     <View style={{ justifyContent: 'center' }}>
-                        <TimerCountdown
-                            initialSecondsRemaining={this.renderTimer() * 1000}
-                            onTimeElapsed={this.decideNextMove()}
-                            allowFontScaling
-                            style={{ fontSize: 100 }}
-                        />
-
+                        {this.renderTimer()}
                     </View>
                 </CardSection>
                 <Button
+                    onPress={() => {
+                        this.setModalVisible(true);
+                    }}
                     style={{
                         position: 'absolute',
                         height: '100%',
