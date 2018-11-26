@@ -1,5 +1,6 @@
 import React from 'react';
 import { View } from 'react-native';
+import colors from '../Colors';
 
 const Card = (props) => {
     const { contStyle } = styles;
@@ -12,7 +13,7 @@ const styles = {
     contStyle: {
         justifyContent: 'space-around',
         flex: 1,
-        backgroundColor: '#ff6666',
+        backgroundColor: colors.main,
         elevation: 1
     }
 

@@ -8,6 +8,7 @@ import { CardSection, Card, Button } from './common';
 import { stretchList } from './StretchList';
 import { toggleRestAction, nextStretch, resetStretches } from '../actions';
 import FullScreenProgress from './common/FullScreenProgress';
+import colors from './Colors';
 
 class StretchScreen extends Component {
     state = {
@@ -56,7 +57,7 @@ class StretchScreen extends Component {
                 initialSecondsRemaining={this.decideSecondsRemaining() * 1000}
                 onTimeElapsed={this.decideNextMove()}
                 allowFontScaling
-                style={{ fontSize: 100 }}
+                style={{ fontSize: 100, fontWeight: '200' }}
             />
         );
     }
@@ -131,12 +132,13 @@ const styles = StyleSheet.create({
     modalDesc: {
         flex: 1,
         padding: 20,
-        backgroundColor: '#ff6666',
+        backgroundColor: colors.main,
         justifyContent: 'space-around'
     },
     modalText: {
-        fontSize: 15,
-        textAlign: 'center'
+        fontSize: 20,
+        textAlign: 'center',
+        fontWeight: '200'
     }
 });
 

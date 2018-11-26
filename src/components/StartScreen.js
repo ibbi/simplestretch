@@ -45,7 +45,7 @@ class StartScreen extends Component {
                             }}
                         >
                             <Text style={styles.startText}>
-                                {((this.props.time * 9) + this.props.time) / 60}
+                                {((this.props.time * 12) + this.props.time) / 60}
                             </Text>
                             {/* <View
                                 style={{
@@ -77,7 +77,8 @@ const styles = StyleSheet.create({
     },
     startText: {
         fontSize: 100,
-        textAlign: 'center'
+        textAlign: 'center',
+        fontWeight: '200'
     },
     miniText: {
         fontSize: 15,

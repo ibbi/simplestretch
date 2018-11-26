@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { View, StyleSheet, Animated, Easing } from 'react-native';
 import { connect } from 'react-redux';
+import colors from '../Colors';
 
 class FullScreenProgress extends Component {
     constructor(props) {
@@ -48,12 +49,12 @@ const styles = StyleSheet.create({
         position: 'absolute',
         height: '100%',
         width: '100%',
-        backgroundColor: '#ffff66'
+        backgroundColor: colors.accent
     },
     pBarTop: {
         position: 'absolute',
         width: '100%',
-        backgroundColor: '#ff6666'
+        backgroundColor: colors.main
     }
 });
 

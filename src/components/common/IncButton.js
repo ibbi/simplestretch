@@ -21,7 +21,8 @@ const styles = {
     },
     txtStyle: {
         fontSize: 100,
-        alignSelf: 'center'
+        alignSelf: 'center',
+        fontWeight: '200'
     }
 };
 export { IncButton };
