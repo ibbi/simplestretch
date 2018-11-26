@@ -78,7 +78,11 @@ class StretchScreen extends Component {
                     onRequestClose={() => { console.log('Modal has been closed.'); }}
                 >
                     <View style={styles.modalDesc}>
-                        <Text style={styles.modalText}>{`${stretchList[this.props.stretchId].desc}`}</Text>
+                        <Text
+                            style={styles.modalText}
+                        >
+                            {`${stretchList[this.props.stretchId].desc}`}
+                        </Text>
                         <Button
                             onPress={() => {
                                 this.setModalVisible(!this.state.modalVisible);
