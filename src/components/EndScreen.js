@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Text } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import Sound from 'react-native-sound';
 import { Card, CardSection, Button } from './common';
@@ -11,9 +10,7 @@ class EndScreen extends Component {
     render() {
         return (
             <Card>
-                <CardSection>
-                    <Text>loot</Text>
-                </CardSection>
+                <CardSection />
                 <CardSection>
                     <Button onPress={() => Actions.replace('startScreen')}>restart</Button>
                 </CardSection>

@@ -11,7 +11,6 @@ const CardSection = (props) => {
 const styles = {
     contStyle: {
         justifyContent: 'center',
-        alignItems: 'center',
         flexDirection: 'row',
         position: 'relative',
         flex: 1

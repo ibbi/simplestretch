@@ -78,7 +78,7 @@ class StretchScreen extends Component {
                     onRequestClose={() => { console.log('Modal has been closed.'); }}
                 >
                     <Card>
-                        <CardSection style={{ padding: 10 }}>
+                        <CardSection style={{ alignItems: 'flex-end', padding: 10 }}>
                             <Text
                                 style={styles.modalText}
                             >
