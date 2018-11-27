@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 import colors from '../Colors';
 
-const Button = (props) => {
+const InfoButton = (props) => {
     const { children, onPress } = props;
     const { btnStyle, txtStyle } = styles;
     return (
@@ -18,14 +18,13 @@ const styles = {
     btnStyle: {
         borderWidth: 0,
         flex: 1,
-        alignSelf: 'stretch',
-        backgroundColor: colors.tappable
+        alignSelf: 'stretch'
     },
     txtStyle: {
-        fontSize: 80,
+        fontSize: 30,
         alignSelf: 'center',
-        fontWeight: '200',
-        color: colors.textLight
+        fontWeight: '300',
+        color: colors.textDark
     }
 };
-export { Button };
+export { InfoButton };

@@ -4,11 +4,10 @@ import { View, StyleSheet, Image, Modal, Text } from 'react-native';
 import Sound from 'react-native-sound';
 import { Actions } from 'react-native-router-flux';
 import TimerCountdown from 'react-native-timer-countdown';
-import { CardSection, Card, Button } from './common';
+import { CardSection, Card, Button, InfoButton } from './common';
 import { stretchList } from './StretchList';
 import { toggleRestAction, nextStretch, resetStretches } from '../actions';
 import FullScreenProgress from './common/FullScreenProgress';
-import colors from './Colors';
 
 class StretchScreen extends Component {
     state = {
@@ -39,7 +38,7 @@ class StretchScreen extends Component {
             this.restToggled();
             Actions.refresh({
                 title: this.props.restToggle_b ?
-                    `Next: ${stretchList[this.props.stretchId].name}` :
+                    'Get In Position' :
                     `${stretchList[this.props.stretchId].name}`
             });
         };
@@ -78,20 +77,35 @@ class StretchScreen extends Component {
                     visible={this.state.modalVisible}
                     onRequestClose={() => { console.log('Modal has been closed.'); }}
                 >
-                    <View style={styles.modalDesc}>
-                        <Text
-                            style={styles.modalText}
-                        >
-                            {`${stretchList[this.props.stretchId].desc}`}
-                        </Text>
-                        <Button
-                            onPress={() => {
-                                this.setModalVisible(!this.state.modalVisible);
-                            }}
-                        >
-                            <Text>X</Text>
-                        </Button>
-                    </View>
+                    <Card>
+                        <CardSection style={{ padding: 10 }}>
+                            <Text
+                                style={styles.modalText}
+                            >
+                                <Text>
+                                    <Text style={{ fontWeight: '500' }}>Beginner</Text>
+                                    {`\n${stretchList[this.props.stretchId].desc.Beginner}\n\n`}
+                                </Text>
+                                <Text>
+                                    <Text style={{ fontWeight: '500' }}>Intermediate</Text>
+                                    {`\n${stretchList[this.props.stretchId].desc.Intermediate}\n\n`}
+                                </Text>
+                                <Text>
+                                    <Text style={{ fontWeight: '500' }}>Advanced</Text>
+                                    {`\n${stretchList[this.props.stretchId].desc.Advanced}\n\n`}
+                                </Text>
+                            </Text>
+                        </CardSection>
+                        <CardSection>
+                            <Button
+                                onPress={() => {
+                                    this.setModalVisible(!this.state.modalVisible);
+                                }}
+                            >
+                                <Text>close</Text>
+                            </Button>
+                        </CardSection>
+                    </Card>
                 </Modal>
                 <CardSection>
                     <View style={{ justifyContent: 'center' }}>
@@ -106,7 +120,7 @@ class StretchScreen extends Component {
                         {this.renderTimer()}
                     </View>
                 </CardSection>
-                <Button
+                <InfoButton
                     onPress={() => {
                         this.setModalVisible(true);
                     }}
@@ -115,7 +129,7 @@ class StretchScreen extends Component {
                         height: '100%',
                         width: '100%'
                     }}
-                > ? </Button>
+                >tap for description </InfoButton>
             </Card>
         );
     }
@@ -129,14 +143,8 @@ const styles = StyleSheet.create({
         height: 300,
         margin: 5
     },
-    modalDesc: {
-        flex: 1,
-        padding: 20,
-        backgroundColor: colors.main,
-        justifyContent: 'space-around'
-    },
     modalText: {
-        fontSize: 20,
+        fontSize: 15,
         textAlign: 'center',
         fontWeight: '200'
     }

@@ -45,7 +45,7 @@ class StartScreen extends Component {
                             }}
                         >
                             <Text style={styles.startText}>
-                                {((this.props.time * 12) + this.props.time) / 60}
+                                {((this.props.time * 11) + this.props.time) / 60}
                             </Text>
                             {/* <View
                                 style={{

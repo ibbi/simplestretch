@@ -15,7 +15,7 @@ class EndScreen extends Component {
                     <Text>loot</Text>
                 </CardSection>
                 <CardSection>
-                    <Button onPress={() => Actions.startScreen()}>restart</Button>
+                    <Button onPress={() => Actions.replace('startScreen')}>restart</Button>
                 </CardSection>
             </Card>
         );

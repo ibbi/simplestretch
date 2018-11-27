@@ -18,7 +18,7 @@ const RouterComponent = () => {
                 <Scene
                     key='stretchScreen'
                     component={StretchScreen}
-                    title='Next: Shoulder Extension'
+                    title='Get In Position'
                 />
                 <Scene
                     hideNavBar
