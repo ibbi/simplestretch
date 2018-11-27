@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { View, StyleSheet, Image, Modal, Text, SafeAreaView } from 'react-native';
+import { View, StyleSheet, Image, Modal, Text, SafeAreaView, Platform } from 'react-native';
 import Sound from 'react-native-sound';
 import { Actions } from 'react-native-router-flux';
 import TimerCountdown from 'react-native-timer-countdown';
@@ -8,6 +8,7 @@ import { CardSection, Card, Button, InfoButton } from './common';
 import { stretchList } from './StretchList';
 import { toggleRestAction, nextStretch, resetStretches } from '../actions';
 import FullScreenProgress from './common/FullScreenProgress';
+import colors from './Colors';
 
 class StretchScreen extends Component {
     state = {
@@ -22,6 +23,11 @@ class StretchScreen extends Component {
     }
     restToggled() {
         this.props.toggleRestAction();
+    }
+    formatSecondsRemaining(milliseconds) {
+        const remainingSec = Math.round(milliseconds / 1000);
+        const seconds = parseInt((remainingSec).toString(), 10);
+        return seconds;
     }
     stretchComplete() {
         this.props.nextStretch();
@@ -56,8 +62,9 @@ class StretchScreen extends Component {
             <TimerCountdown
                 initialSecondsRemaining={this.decideSecondsRemaining() * 1000}
                 onTimeElapsed={this.decideNextMove()}
+                formatSecondsRemaining={(milliseconds) => this.formatSecondsRemaining(milliseconds)}
                 allowFontScaling
-                style={{ fontSize: 100, fontWeight: '200' }}
+                style={{ fontFamily, fontSize: 100, fontWeight: '200' }}
             />
         );
     }
@@ -79,7 +86,7 @@ class StretchScreen extends Component {
                     visible={this.state.modalVisible}
                     onRequestClose={() => { console.log('Modal has been closed.'); }}
                 >
-                    <SafeAreaView style={{ flex: 1 }}>
+                    <SafeAreaView style={{ flex: 1, backgroundColor: colors.main }}>
 
                         <Card>
                             <CardSection style={{ padding: 10 }}>
@@ -123,6 +130,7 @@ class StretchScreen extends Component {
                 <CardSection>
                     <View style={{ justifyContent: 'center' }}>
                         {this.renderTimer()}
+                        <Text style={styles.miniText}>seconds</Text>
                     </View>
                 </CardSection>
                 <InfoButton
@@ -152,8 +160,14 @@ const styles = StyleSheet.create({
         fontSize: 15,
         textAlign: 'center',
         fontWeight: '200'
+    },
+    miniText: {
+        fontSize: 15,
+        textAlign: 'center',
+        marginTop: -15
     }
 });
+const fontFamily = Platform.OS === 'ios' ? 'HelveticaNeue-Thin' : 'Roboto';
 
 const mapStateToProps = ({ start, stretch }) => {
     return {

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Text, View, StyleSheet } from 'react-native';
+import { Text, View, StyleSheet, Platform } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import { Card, CardSection, Button, IncButton } from './common';
 import { incrementTime, decrementTime } from '../actions';
@@ -72,7 +72,8 @@ const styles = StyleSheet.create({
     startText: {
         fontSize: 100,
         textAlign: 'center',
-        fontWeight: '200'
+        fontWeight: '200',
+        fontFamily
     },
     miniText: {
         fontSize: 15,
@@ -80,6 +81,7 @@ const styles = StyleSheet.create({
         marginTop: -15
     }
 });
+const fontFamily = Platform.OS === 'ios' ? 'HelveticaNeue-Thin' : 'Roboto';
 
 const mapStateToProps = ({ start }) => {
     return {

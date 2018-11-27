@@ -86,7 +86,7 @@ export const stretchList = [
         desc: {
             Beginner: 'While lying on your back, bend your knees and put your feet near your buttocks. By squeezing the glutes, lift the hips and pelvis off the floor and press it towards the ceiling.',
             Intermediate: 'Kneel on your shins on the ground. Curl the toes under your feet, and reach behind you, grabbing the heels with each respective hand. Squeeze the glutes and push the pelvis forward as much as possible while holding onto the heels. Look upward and pull the shoulders back.',
-            Advanced: 'Lie on your back, with knees bent and pulled into your glutes. Place hands on the ground beside your head, with fingers pointing towards your shoulders. Lift yourself into a ∩ shape, with hands and feet in contact with the ground.'
+            Advanced: '(Bridge) Lying on your back, press body into a ∩ shape, with hands and feet in contact with the ground.'
         }
     },
     {

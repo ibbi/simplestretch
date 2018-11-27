@@ -7,7 +7,7 @@ import colors from './components/Colors';
 
 const RouterComponent = () => {
     return (
-        <Router navigationBarStyle={{ borderBottomWidth: 0, backgroundColor: colors.main }}>
+        <Router navigationBarStyle={{ backgroundColor: colors.main }}>
             <Scene key='root' >
                 <Scene
                     hideNavBar
