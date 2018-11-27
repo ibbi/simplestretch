@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { View, StyleSheet, Image, Modal, Text } from 'react-native';
+import { View, StyleSheet, Image, Modal, Text, SafeAreaView } from 'react-native';
 import Sound from 'react-native-sound';
 import { Actions } from 'react-native-router-flux';
 import TimerCountdown from 'react-native-timer-countdown';
@@ -38,7 +38,8 @@ class StretchScreen extends Component {
             this.restToggled();
             Actions.refresh({
                 title: this.props.restToggle_b ?
-                    'Get In Position' :
+                    (this.props.stretchId === 3) || (this.props.stretchId === 7) || (this.props.stretchId === 11) ? 'Switch Sides' :
+                        'Get In Position' :
                     `${stretchList[this.props.stretchId].name}`
             });
         };
@@ -70,6 +71,7 @@ class StretchScreen extends Component {
     }
     render() {
         return (
+
             <Card>
                 {this.renderProgressBar()}
                 <Modal
@@ -77,35 +79,38 @@ class StretchScreen extends Component {
                     visible={this.state.modalVisible}
                     onRequestClose={() => { console.log('Modal has been closed.'); }}
                 >
-                    <Card>
-                        <CardSection style={{ alignItems: 'flex-end', padding: 10 }}>
-                            <Text
-                                style={styles.modalText}
-                            >
-                                <Text>
-                                    <Text style={{ fontWeight: '500' }}>Beginner</Text>
-                                    {`\n${stretchList[this.props.stretchId].desc.Beginner}\n\n`}
+                    <SafeAreaView style={{ flex: 1 }}>
+
+                        <Card>
+                            <CardSection style={{ padding: 10 }}>
+                                <Text
+                                    style={styles.modalText}
+                                >
+                                    <Text>
+                                        <Text style={{ fontWeight: '500' }}>Beginner</Text>
+                                        {`\n${stretchList[this.props.stretchId].desc.Beginner}\n\n`}
+                                    </Text>
+                                    <Text>
+                                        <Text style={{ fontWeight: '500' }}>Intermediate</Text>
+                                        {`\n${stretchList[this.props.stretchId].desc.Intermediate}\n\n`}
+                                    </Text>
+                                    <Text>
+                                        <Text style={{ fontWeight: '500' }}>Advanced</Text>
+                                        {`\n${stretchList[this.props.stretchId].desc.Advanced}\n\n`}
+                                    </Text>
                                 </Text>
-                                <Text>
-                                    <Text style={{ fontWeight: '500' }}>Intermediate</Text>
-                                    {`\n${stretchList[this.props.stretchId].desc.Intermediate}\n\n`}
-                                </Text>
-                                <Text>
-                                    <Text style={{ fontWeight: '500' }}>Advanced</Text>
-                                    {`\n${stretchList[this.props.stretchId].desc.Advanced}\n\n`}
-                                </Text>
-                            </Text>
-                        </CardSection>
-                        <CardSection>
-                            <Button
-                                onPress={() => {
-                                    this.setModalVisible(!this.state.modalVisible);
-                                }}
-                            >
-                                <Text>close</Text>
-                            </Button>
-                        </CardSection>
-                    </Card>
+                            </CardSection>
+                            <CardSection>
+                                <Button
+                                    onPress={() => {
+                                        this.setModalVisible(!this.state.modalVisible);
+                                    }}
+                                >
+                                    <Text>close</Text>
+                                </Button>
+                            </CardSection>
+                        </Card>
+                    </SafeAreaView>
                 </Modal>
                 <CardSection>
                     <View style={{ justifyContent: 'center' }}>

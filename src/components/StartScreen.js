@@ -14,6 +14,7 @@ class StartScreen extends Component {
     }
     render() {
         return (
+
             <Card>
                 <CardSection>
                     <View style={styles.incrementView} >
@@ -47,14 +48,7 @@ class StartScreen extends Component {
                             <Text style={styles.startText}>
                                 {((this.props.time * 11) + this.props.time) / 60}
                             </Text>
-                            {/* <View
-                                style={{
-                                    backgroundColor: 'yellow',
-                                    justifyContent: 'center'
-                                }}
-                            > */}
                             <Text style={styles.miniText}>minutes</Text>
-                            {/* </View> */}
                         </View>
                     </View>
 
