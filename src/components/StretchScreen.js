@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { View, StyleSheet, Image, Modal, Text, SafeAreaView, Platform } from 'react-native';
+import { View, StyleSheet, Image, Text, Platform } from 'react-native';
 import Sound from 'react-native-sound';
 import { Actions } from 'react-native-router-flux';
 import TimerCountdown from 'react-native-timer-countdown';
-import { CardSection, Card, Button, InfoButton } from './common';
+import { CardSection, Card, InfoButton, Button, IncButton } from './common';
 import { stretchList } from './StretchList';
 import { toggleRestAction, nextStretch, resetStretches } from '../actions';
 import FullScreenProgress from './common/FullScreenProgress';
@@ -13,7 +13,7 @@ import colors from './Colors';
 class StretchScreen extends Component {
     state = {
         modalVisible: false,
-        resetTimer: 1
+        descriptionID: 0
     };
     componentWillMount() {
         this.resetState();
@@ -30,10 +30,23 @@ class StretchScreen extends Component {
         return seconds;
     }
     stretchComplete() {
+        if (!this.props.restToggle_b) {
+            this.setState({ descriptionID: 0 });
+        }
         this.props.nextStretch();
     }
     resetState() {
         this.props.resetStretches();
+    }
+    changeDescription() {
+        if (this.state.descriptionID === 2) {
+            this.setState({ descriptionID: 0 });
+            return;
+        } else if (this.state.descriptionID === 1) {
+            this.setState({ descriptionID: 2 });
+            return;
+        } this.setState({ descriptionID: 1 });
+        return;
     }
     decideNextMove() {
         beep.play();
@@ -43,10 +56,7 @@ class StretchScreen extends Component {
             this.stretchComplete();
             this.restToggled();
             Actions.refresh({
-                title: this.props.restToggle_b ?
-                    (this.props.stretchId === 3) || (this.props.stretchId === 7) || (this.props.stretchId === 11) ? 'Switch Sides' :
-                        'Get In Position' :
-                    `${stretchList[this.props.stretchId].name}`
+                title: `Stretch ${this.props.stretchId + 1} of ${stretchList.length}`
             });
         };
     }
@@ -55,17 +65,75 @@ class StretchScreen extends Component {
             return (10);
         } return (this.props.time);
     }
+    renderDescription() {
+        if (this.state.descriptionID === 2) {
+            return (
+                <Text
+                    style={styles.modalText}
+                >
+                    <Text style={{ fontWeight: '500' }}>{'\n'}Advanced</Text>
+                    {`\n${stretchList[this.props.stretchId].desc.Advanced}`}
+                </Text>
+            );
+        } else if (this.state.descriptionID === 1) {
+            return (
+                <Text
+                    style={styles.modalText}
+                >
+                    <Text style={{ fontWeight: '500' }}>{'\n'}Intermediate</Text>
+                    {`\n${stretchList[this.props.stretchId].desc.Intermediate}`}
+                </Text>
+            );
+        }
+        return (
+            <Text
+                style={styles.modalText}
+            >
+                <Text style={{ fontWeight: '500' }}>{'\n'}Beginner</Text>
+                {`\n${stretchList[this.props.stretchId].desc.Beginner}`}
+            </Text>
+        );
+    }
     renderTimer() {
         if (this.state.modalVisible) {
-            return;
+            return (
+                <CardSection style={{ flexDirection: 'column', paddingLeft: 10, paddingRight: 10, backgroundColor: colors.tappable, justifyContent: 'space-between' }}>
+                    {this.renderDescription()}
+                    <Button
+                        onPress={() => {
+                            this.changeDescription();
+                        }}
+                        style={{ flexShrink: 0 }}
+                    >
+                        {(this.state.descriptionID === 2) ? 'reset' : 'next'}
+                    </Button>
+                </CardSection>
+            );
         } return (
-            <TimerCountdown
-                initialSecondsRemaining={this.decideSecondsRemaining() * 1000}
-                onTimeElapsed={this.decideNextMove()}
-                formatSecondsRemaining={(milliseconds) => this.formatSecondsRemaining(milliseconds)}
-                allowFontScaling
-                style={{ fontFamily, fontSize: 100, fontWeight: '200' }}
-            />
+            <CardSection>
+                <View style={{ justifyContent: 'center' }}>
+                    <TimerCountdown
+                        initialSecondsRemaining={this.decideSecondsRemaining() * 1000}
+                        onTimeElapsed={this.decideNextMove()}
+                        formatSecondsRemaining={(milliseconds) => this.formatSecondsRemaining(milliseconds)}
+                        allowFontScaling
+                        style={{ fontFamily, fontSize: 100, fontWeight: '200' }}
+                    />
+                    <Text style={styles.miniText}>seconds</Text>
+                </View>
+            </CardSection>
+        );
+    }
+    renderCenterText() {
+        if (this.state.modalVisible) {
+            return (
+                `${stretchList[this.props.stretchId].name}`
+            );
+        } return (
+            this.props.restToggle_b ?
+                (this.props.stretchId === 3) || (this.props.stretchId === 7) || (this.props.stretchId === 11) ? 'switch sides' :
+                    'get in position' :
+                'stretch'
         );
     }
     renderProgressBar() {
@@ -81,69 +149,37 @@ class StretchScreen extends Component {
 
             <Card>
                 {this.renderProgressBar()}
-                <Modal
-                    animationType={'slide'} transparent={false}
-                    visible={this.state.modalVisible}
-                    onRequestClose={() => { console.log('Modal has been closed.'); }}
-                >
-                    <SafeAreaView style={{ flex: 1, backgroundColor: colors.main }}>
-
-                        <Card>
-                            <CardSection style={{ padding: 10 }}>
-                                <Text
-                                    style={styles.modalText}
-                                >
-                                    <Text>
-                                        <Text style={{ fontWeight: '500' }}>Beginner</Text>
-                                        {`\n${stretchList[this.props.stretchId].desc.Beginner}\n\n`}
-                                    </Text>
-                                    <Text>
-                                        <Text style={{ fontWeight: '500' }}>Intermediate</Text>
-                                        {`\n${stretchList[this.props.stretchId].desc.Intermediate}\n\n`}
-                                    </Text>
-                                    <Text>
-                                        <Text style={{ fontWeight: '500' }}>Advanced</Text>
-                                        {`\n${stretchList[this.props.stretchId].desc.Advanced}\n\n`}
-                                    </Text>
-                                </Text>
-                            </CardSection>
-                            <CardSection>
-                                <Button
-                                    onPress={() => {
-                                        this.setModalVisible(!this.state.modalVisible);
-                                    }}
-                                >
-                                    <Text>close</Text>
-                                </Button>
-                            </CardSection>
-                        </Card>
-                    </SafeAreaView>
-                </Modal>
                 <CardSection>
                     <View style={{ justifyContent: 'center' }}>
                         <Image
                             style={styles.stretchImg}
                             source={stretchList[this.props.stretchId].img}
                         />
+                        <InfoButton
+                            onPress={() => {
+                                this.setModalVisible(!this.state.modalVisible);
+                            }}
+                            style={{
+                                position: 'absolute',
+                                height: '100%',
+                                width: '100%'
+                            }}
+                            modalVisible={this.state.modalVisible}
+                        />
+                        <Text
+                            style={{
+                                fontSize: 30,
+                                alignSelf: 'center',
+                                fontWeight: '200',
+                                color: colors.textMedium
+                            }}
+                        >
+                            {this.renderCenterText()}
+                        </Text>
                     </View>
                 </CardSection>
-                <CardSection>
-                    <View style={{ justifyContent: 'center' }}>
-                        {this.renderTimer()}
-                        <Text style={styles.miniText}>seconds</Text>
-                    </View>
-                </CardSection>
-                <InfoButton
-                    onPress={() => {
-                        this.setModalVisible(true);
-                    }}
-                    style={{
-                        position: 'absolute',
-                        height: '100%',
-                        width: '100%'
-                    }}
-                >tap for description </InfoButton>
-            </Card>
+                {this.renderTimer()}
+            </Card >
         );
     }
 
@@ -157,9 +193,10 @@ const styles = StyleSheet.create({
         margin: 5
     },
     modalText: {
-        fontSize: 15,
+        fontSize: 20,
         textAlign: 'center',
-        fontWeight: '200'
+        fontWeight: '200',
+        flex: 1
     },
     miniText: {
         fontSize: 15,

@@ -3,12 +3,22 @@ import { View, Text, TouchableOpacity } from 'react-native';
 import colors from '../Colors';
 
 const InfoButton = (props) => {
-    const { children, onPress } = props;
-    const { btnStyle, txtStyle } = styles;
+    const { onPress } = props;
+    const { btnStyle, txtStyle, clickable } = styles;
     return (
         <TouchableOpacity onPress={onPress} style={[btnStyle, props.style]}>
-            <View style={{ flex: 1, justifyContent: 'center' }}>
-                <Text style={txtStyle}>{children}</Text>
+            <View style={{ marginTop: 8, flex: 1, justifyContent: 'flex-start' }}>
+
+                <Text
+                    style={txtStyle}
+                >
+                    tap {props.modalVisible ?
+                        'to ' :
+                        'for '}
+                    {props.modalVisible ?
+                        <Text style={clickable}>return</Text> :
+                        <Text style={clickable}>description</Text>}
+                </Text>
             </View>
         </TouchableOpacity >
     );
@@ -23,8 +33,11 @@ const styles = {
     txtStyle: {
         fontSize: 30,
         alignSelf: 'center',
-        fontWeight: '300',
-        color: colors.textDark
+        fontWeight: '200'
+    },
+    clickable: {
+        color: colors.textClickable,
+        fontWeight: '300'
     }
 };
 export { InfoButton };
