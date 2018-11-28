@@ -71,8 +71,8 @@ class StretchScreen extends Component {
                 <Text
                     style={styles.modalText}
                 >
-                    <Text style={{ fontWeight: '500' }}>{'\n'}Advanced</Text>
-                    {`\n${stretchList[this.props.stretchId].desc.Advanced}`}
+                    <Text>{'\n'}Beginner   Intermediate   <Text style={{ fontWeight: '500', textDecorationLine: 'underline' }}>Advanced</Text></Text>
+                    {`\n\n${stretchList[this.props.stretchId].desc.Advanced}`}
                 </Text>
             );
         } else if (this.state.descriptionID === 1) {
@@ -80,8 +80,8 @@ class StretchScreen extends Component {
                 <Text
                     style={styles.modalText}
                 >
-                    <Text style={{ fontWeight: '500' }}>{'\n'}Intermediate</Text>
-                    {`\n${stretchList[this.props.stretchId].desc.Intermediate}`}
+                    <Text>{'\n'}Beginner   <Text style={{ fontWeight: '500', textDecorationLine: 'underline' }}>Intermediate</Text>   Advanced</Text>
+                    {`\n\n${stretchList[this.props.stretchId].desc.Intermediate}`}
                 </Text>
             );
         }
@@ -89,8 +89,8 @@ class StretchScreen extends Component {
             <Text
                 style={styles.modalText}
             >
-                <Text style={{ fontWeight: '500' }}>{'\n'}Beginner</Text>
-                {`\n${stretchList[this.props.stretchId].desc.Beginner}`}
+                <Text style={{ fontWeight: '500', textDecorationLine: 'underline' }}>{'\n'}Beginner</Text><Text>   Intermediate   Advanced</Text>
+                {`\n\n${stretchList[this.props.stretchId].desc.Beginner}`}
             </Text>
         );
     }
@@ -105,7 +105,7 @@ class StretchScreen extends Component {
                         }}
                         style={{ flexShrink: 0 }}
                     >
-                        {(this.state.descriptionID === 2) ? 'reset' : 'next'}
+                        next
                     </Button>
                 </CardSection>
             );
