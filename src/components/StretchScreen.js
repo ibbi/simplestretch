@@ -4,7 +4,7 @@ import { View, StyleSheet, Image, Text, Platform } from 'react-native';
 import Sound from 'react-native-sound';
 import { Actions } from 'react-native-router-flux';
 import TimerCountdown from 'react-native-timer-countdown';
-import { CardSection, Card, InfoButton, Button, IncButton } from './common';
+import { CardSection, Card, InfoButton, Button } from './common';
 import { stretchList } from './StretchList';
 import { toggleRestAction, nextStretch, resetStretches } from '../actions';
 import FullScreenProgress from './common/FullScreenProgress';
@@ -71,7 +71,7 @@ class StretchScreen extends Component {
                 <Text
                     style={styles.modalText}
                 >
-                    <Text>{'\n'}Beginner   Intermediate   <Text style={{ fontWeight: '500', textDecorationLine: 'underline' }}>Advanced</Text></Text>
+                    <Text>{'\nBeginner   Intermediate   '}<Text style={{ fontWeight: '500', textDecorationLine: 'underline' }}>Advanced</Text></Text>
                     {`\n\n${stretchList[this.props.stretchId].desc.Advanced}`}
                 </Text>
             );
@@ -80,7 +80,7 @@ class StretchScreen extends Component {
                 <Text
                     style={styles.modalText}
                 >
-                    <Text>{'\n'}Beginner   <Text style={{ fontWeight: '500', textDecorationLine: 'underline' }}>Intermediate</Text>   Advanced</Text>
+                    <Text>{'\nBeginner   '}<Text style={{ fontWeight: '500', textDecorationLine: 'underline' }}>Intermediate</Text>   Advanced</Text>
                     {`\n\n${stretchList[this.props.stretchId].desc.Intermediate}`}
                 </Text>
             );
