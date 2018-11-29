@@ -25,6 +25,7 @@ export default (state = INITIAL_STATE, action) => {
             return { ...state };
         } else if (fullCurrentDate === fullStreakDate) {
             return { ...state, streak: state.streak + 1, lastStretched: justStretched };
-        } return { ...state, INITIAL_STATE };
+        }
+        return { ...state, ...INITIAL_STATE, lastStretched: justStretched };
     } return state;
 };

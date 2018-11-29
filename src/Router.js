@@ -24,12 +24,8 @@ const RouterComponent = () => {
                     hideNavBar
                     key='endScreen'
                     component={EndScreen}
+
                 />
-                {/* <Scene
-                        key='employeeForm'
-                        component={EmployeeCreate}
-                        title='create employee'
-                    /> */}
             </Scene>
         </Router>
     );
