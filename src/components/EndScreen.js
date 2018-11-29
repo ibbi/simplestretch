@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, StyleSheet, Platform } from 'react-native';
+import { Text, View, StyleSheet, Platform, Vibration } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
 import Sound from 'react-native-sound';
@@ -9,7 +9,8 @@ import { Card, CardSection, Button } from './common';
 class EndScreen extends Component {
     componentWillMount() {
         this.updateStreak();
-        beep.play();
+        endBeep.play();
+        Vibration.vibrate(Platform.OS === 'ios' ? [500, 500, 500] : [500, 500, 500, 500, 500, 500]);
     }
     updateStreak() {
         this.props.getStreak(new Date().getTime());
@@ -39,7 +40,7 @@ class EndScreen extends Component {
 
 }
 
-const beep = new Sound('beep.mp3', Sound.MAIN_BUNDLE, (error) => {
+const endBeep = new Sound('endBeep.mp3', Sound.MAIN_BUNDLE, (error) => {
     if (error) {
         console.log('failed to load the sound', error);
         return;

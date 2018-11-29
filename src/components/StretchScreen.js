@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { View, StyleSheet, Image, Text, Platform } from 'react-native';
+import { View, StyleSheet, Image, Text, Platform, Vibration } from 'react-native';
 import Sound from 'react-native-sound';
 import { Actions } from 'react-native-router-flux';
 import TimerCountdown from 'react-native-timer-countdown';
@@ -50,6 +50,7 @@ class StretchScreen extends Component {
     }
     decideNextMove() {
         beep.play();
+        Vibration.vibrate(500);
         if (!this.props.restToggle_b && this.props.stretchId > 10) {
             return () => Actions.replace('endScreen');
         } return () => {
