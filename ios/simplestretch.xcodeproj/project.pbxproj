@@ -25,7 +25,7 @@
 		146834051AC3E58100842450 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
 		2802834D21AF702B00028619 /* ios in Resources */ = {isa = PBXBuildFile; fileRef = 2802832621AF702B00028619 /* ios */; };
 		285B722121AF725B002955C1 /* beep.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 285B722021AF725B002955C1 /* beep.mp3 */; };
-		285B722321AF7338002955C1 /* endBeep.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 285B722221AF7338002955C1 /* endBeep.mp3 */; };
+		28C060C721AF7A1A0031EE08 /* endbeep.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 28C060C621AF7A1A0031EE08 /* endbeep.mp3 */; };
 		28D04DB921A36E7400C84279 /* src in Resources */ = {isa = PBXBuildFile; fileRef = 28D04DB821A36E7400C84279 /* src */; };
 		2D02E4BC1E0B4A80006451C7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
@@ -351,7 +351,7 @@
 		272A8BA2F837415794D73976 /* RNSound.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNSound.xcodeproj; path = "../node_modules/react-native-sound/RNSound.xcodeproj"; sourceTree = "<group>"; };
 		2802832621AF702B00028619 /* ios */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ios; sourceTree = "<group>"; };
 		285B722021AF725B002955C1 /* beep.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = beep.mp3; path = ../src/design_resources/beep.mp3; sourceTree = "<group>"; };
-		285B722221AF7338002955C1 /* endBeep.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = endBeep.mp3; path = ../src/design_resources/endBeep.mp3; sourceTree = "<group>"; };
+		28C060C621AF7A1A0031EE08 /* endbeep.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = endbeep.mp3; path = ../src/design_resources/endbeep.mp3; sourceTree = "<group>"; };
 		28D04DB821A36E7400C84279 /* src */ = {isa = PBXFileReference; lastKnownFileType = folder; name = src; path = ../src; sourceTree = "<group>"; };
 		2D02E47B1E0B4A5D006451C7 /* simplestretch-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "simplestretch-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* simplestretch-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "simplestretch-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -608,7 +608,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
-				285B722221AF7338002955C1 /* endBeep.mp3 */,
+				28C060C621AF7A1A0031EE08 /* endbeep.mp3 */,
 				285B722021AF725B002955C1 /* beep.mp3 */,
 				2802832621AF702B00028619 /* ios */,
 				28D04DB821A36E7400C84279 /* src */,
@@ -1101,9 +1101,9 @@
 			files = (
 				28D04DB921A36E7400C84279 /* src in Resources */,
 				285B722121AF725B002955C1 /* beep.mp3 in Resources */,
-				285B722321AF7338002955C1 /* endBeep.mp3 in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
+				28C060C721AF7A1A0031EE08 /* endbeep.mp3 in Resources */,
 				2802834D21AF702B00028619 /* ios in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

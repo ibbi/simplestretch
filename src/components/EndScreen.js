@@ -9,7 +9,7 @@ import { Card, CardSection, Button } from './common';
 class EndScreen extends Component {
     componentWillMount() {
         this.updateStreak();
-        endBeep.play();
+        endbeep.play();
         Vibration.vibrate(Platform.OS === 'ios' ? [500, 500, 500] : [500, 500, 500, 500, 500, 500]);
     }
     updateStreak() {
@@ -40,7 +40,7 @@ class EndScreen extends Component {
 
 }
 
-const endBeep = new Sound('endBeep.mp3', Sound.MAIN_BUNDLE, (error) => {
+const endbeep = new Sound('endbeep.mp3', Sound.MAIN_BUNDLE, (error) => {
     if (error) {
         console.log('failed to load the sound', error);
         return;
