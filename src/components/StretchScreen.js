@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { View, StyleSheet, Image, Text, Platform, Vibration } from 'react-native';
+import { View, StyleSheet, Image, Text, Platform, Vibration, TouchableOpacity } from 'react-native';
 import Sound from 'react-native-sound';
 import { Actions } from 'react-native-router-flux';
 import TimerCountdown from 'react-native-timer-countdown';
@@ -38,14 +38,8 @@ class StretchScreen extends Component {
     resetState() {
         this.props.resetStretches();
     }
-    changeDescription() {
-        if (this.state.descriptionID === 2) {
-            this.setState({ descriptionID: 0 });
-            return;
-        } else if (this.state.descriptionID === 1) {
-            this.setState({ descriptionID: 2 });
-            return;
-        } this.setState({ descriptionID: 1 });
+    changeDescription(id) {
+        this.setState({ descriptionID: id });
         return;
     }
     decideNextMove() {
@@ -69,46 +63,69 @@ class StretchScreen extends Component {
     renderDescription() {
         if (this.state.descriptionID === 2) {
             return (
-                <Text
-                    style={styles.modalText}
-                >
-                    <Text>{'\nBeginner   Intermediate   '}<Text style={{ fontWeight: '500', textDecorationLine: 'underline' }}>Advanced</Text></Text>
-                    {`\n\n${stretchList[this.props.stretchId].desc.Advanced}`}
-                </Text>
+                <CardSection style={{ flexDirection: 'column', justifyContent: 'space-between', paddingLeft: 10, paddingRight: 10, backgroundColor: colors.tappable }}>
+
+                    <View style={{ flexDirection: 'row', justifyContent: 'space-evenly' }}>
+                        <TouchableOpacity style={{ flex: 1 }} onPress={() => this.changeDescription(0)}>
+                            <Text style={styles.modalTextTappable}>Beginner</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity style={{ flex: 1 }} onPress={() => this.changeDescription(1)}>
+                            <Text style={styles.modalTextTappable}>Intermediate</Text>
+                        </TouchableOpacity>
+                        <Text style={styles.modalTextSelected}>Advanced</Text>
+                    </View >
+                    <Text style={styles.modalText}>
+                        {
+                            `\n\n${stretchList[this.props.stretchId].desc.Advanced}`
+                        }
+                    </Text>
+                </CardSection>
             );
         } else if (this.state.descriptionID === 1) {
             return (
-                <Text
-                    style={styles.modalText}
-                >
-                    <Text>{'\nBeginner   '}<Text style={{ fontWeight: '500', textDecorationLine: 'underline' }}>Intermediate</Text>   Advanced</Text>
-                    {`\n\n${stretchList[this.props.stretchId].desc.Intermediate}`}
-                </Text>
+                <CardSection style={{ flexDirection: 'column', justifyContent: 'space-between', paddingLeft: 10, paddingRight: 10, backgroundColor: colors.tappable }}>
+
+                    <View style={{ flexDirection: 'row', justifyContent: 'space-around' }}>
+                        <TouchableOpacity style={{ flex: 1 }} onPress={() => this.changeDescription(0)}>
+                            <Text style={styles.modalTextTappable}>Beginner</Text>
+                        </TouchableOpacity>
+                        <Text style={styles.modalTextSelected}>Intermediate</Text>
+                        <TouchableOpacity style={{ flex: 1 }} onPress={() => this.changeDescription(2)}>
+                            <Text style={styles.modalTextTappable}>Advanced</Text>
+                        </TouchableOpacity>
+                    </View >
+                    <Text style={styles.modalText}>
+                        {
+                            `\n\n${stretchList[this.props.stretchId].desc.Intermediate}`
+                        }
+                    </Text>
+                </CardSection>
             );
         }
         return (
-            <Text
-                style={styles.modalText}
-            >
-                <Text style={{ fontWeight: '500', textDecorationLine: 'underline' }}>{'\n'}Beginner</Text><Text>   Intermediate   Advanced</Text>
-                {`\n\n${stretchList[this.props.stretchId].desc.Beginner}`}
-            </Text>
+            <CardSection style={{ flexDirection: 'column', justifyContent: 'space-between', paddingLeft: 10, paddingRight: 10, backgroundColor: colors.tappable }}>
+
+                <View style={{ flexDirection: 'row', justifyContent: 'space-evenly' }}>
+                    <Text style={styles.modalTextSelected}>Beginner</Text>
+                    <TouchableOpacity style={{ flex: 1 }} onPress={() => this.changeDescription(1)}>
+                        <Text style={styles.modalTextTappable}>Intermediate</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={{ flex: 1 }} onPress={() => this.changeDescription(2)}>
+                        <Text style={styles.modalTextTappable}>Advanced</Text>
+                    </TouchableOpacity>
+                </View >
+                <Text style={styles.modalText}>
+                    {
+                        `\n\n${stretchList[this.props.stretchId].desc.Beginner}`
+                    }
+                </Text>
+            </CardSection>
         );
     }
     renderTimer() {
         if (this.state.modalVisible) {
             return (
-                <CardSection style={{ flexDirection: 'column', paddingLeft: 10, paddingRight: 10, backgroundColor: colors.tappable, justifyContent: 'space-between' }}>
-                    {this.renderDescription()}
-                    <Button
-                        onPress={() => {
-                            this.changeDescription();
-                        }}
-                        style={{ flexShrink: 0 }}
-                    >
-                        next
-                    </Button>
-                </CardSection>
+                this.renderDescription()
             );
         } return (
             <CardSection>
@@ -198,6 +215,20 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         fontWeight: '200',
         flex: 1
+    },
+    modalTextTappable: {
+        fontSize: 20,
+        textAlign: 'center',
+        fontWeight: '300',
+        flex: 1,
+        color: colors.textLight
+    },
+    modalTextSelected: {
+        fontSize: 20,
+        textAlign: 'center',
+        flex: 1,
+        textDecorationLine: 'underline',
+        fontWeight: '500'
     },
     miniText: {
         fontSize: 15,
