@@ -4,7 +4,7 @@ import { View, StyleSheet, Image, Text, Platform, Vibration, TouchableOpacity } 
 import Sound from 'react-native-sound';
 import { Actions } from 'react-native-router-flux';
 import TimerCountdown from 'react-native-timer-countdown';
-import { CardSection, Card, InfoButton, Button } from './common';
+import { CardSection, Card, InfoButton } from './common';
 import { stretchList } from './StretchList';
 import { toggleRestAction, nextStretch, resetStretches } from '../actions';
 import FullScreenProgress from './common/FullScreenProgress';
@@ -65,7 +65,7 @@ class StretchScreen extends Component {
             return (
                 <CardSection style={{ flexDirection: 'column', justifyContent: 'space-between', paddingLeft: 10, paddingRight: 10, backgroundColor: colors.tappable }}>
 
-                    <View style={{ flexDirection: 'row', justifyContent: 'space-evenly' }}>
+                    <View style={{ paddingTop: 20, flexDirection: 'row', justifyContent: 'space-evenly' }}>
                         <TouchableOpacity style={{ flex: 1 }} onPress={() => this.changeDescription(0)}>
                             <Text style={styles.modalTextTappable}>Beginner</Text>
                         </TouchableOpacity>
@@ -76,7 +76,7 @@ class StretchScreen extends Component {
                     </View >
                     <Text style={styles.modalText}>
                         {
-                            `\n\n${stretchList[this.props.stretchId].desc.Advanced}`
+                            `\n${stretchList[this.props.stretchId].desc.Advanced}`
                         }
                     </Text>
                 </CardSection>
@@ -85,7 +85,7 @@ class StretchScreen extends Component {
             return (
                 <CardSection style={{ flexDirection: 'column', justifyContent: 'space-between', paddingLeft: 10, paddingRight: 10, backgroundColor: colors.tappable }}>
 
-                    <View style={{ flexDirection: 'row', justifyContent: 'space-around' }}>
+                    <View style={{ paddingTop: 20, flexDirection: 'row', justifyContent: 'space-around' }}>
                         <TouchableOpacity style={{ flex: 1 }} onPress={() => this.changeDescription(0)}>
                             <Text style={styles.modalTextTappable}>Beginner</Text>
                         </TouchableOpacity>
@@ -96,7 +96,7 @@ class StretchScreen extends Component {
                     </View >
                     <Text style={styles.modalText}>
                         {
-                            `\n\n${stretchList[this.props.stretchId].desc.Intermediate}`
+                            `\n${stretchList[this.props.stretchId].desc.Intermediate}`
                         }
                     </Text>
                 </CardSection>
@@ -105,7 +105,7 @@ class StretchScreen extends Component {
         return (
             <CardSection style={{ flexDirection: 'column', justifyContent: 'space-between', paddingLeft: 10, paddingRight: 10, backgroundColor: colors.tappable }}>
 
-                <View style={{ flexDirection: 'row', justifyContent: 'space-evenly' }}>
+                <View style={{ paddingTop: 20, flexDirection: 'row', justifyContent: 'space-evenly' }}>
                     <Text style={styles.modalTextSelected}>Beginner</Text>
                     <TouchableOpacity style={{ flex: 1 }} onPress={() => this.changeDescription(1)}>
                         <Text style={styles.modalTextTappable}>Intermediate</Text>
@@ -116,7 +116,7 @@ class StretchScreen extends Component {
                 </View >
                 <Text style={styles.modalText}>
                     {
-                        `\n\n${stretchList[this.props.stretchId].desc.Beginner}`
+                        `\n${stretchList[this.props.stretchId].desc.Beginner}`
                     }
                 </Text>
             </CardSection>
@@ -168,7 +168,7 @@ class StretchScreen extends Component {
             <Card>
                 {this.renderProgressBar()}
                 <CardSection>
-                    <View style={{ justifyContent: 'center' }}>
+                    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
                         <Image
                             style={styles.stretchImg}
                             source={stretchList[this.props.stretchId].img}
@@ -206,9 +206,10 @@ class StretchScreen extends Component {
 const styles = StyleSheet.create({
 
     stretchImg: {
-        width: 300,
-        height: 300,
-        margin: 5
+        width: 180,
+        height: 180,
+        marginTop: 40,
+        marginBottom: 20
     },
     modalText: {
         fontSize: 20,

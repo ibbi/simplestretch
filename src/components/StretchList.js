@@ -1,7 +1,7 @@
 export const stretchList = [
     {
         name: 'shoulder extension',
-        img: require('../design_resources/stretch0.png'),
+        img: require('../design_resources/stretch2b.png'),
         desc: {
             Beginner: 'Bend forward and place your hands on some object that is overhead, while keeping your arms straight with palms facing down. Attempt to push your head and chest through so that the arms are pressed behind the body.',
             Intermediate: 'Place your elbows on the object and bring the hands together as if you were praying.',
