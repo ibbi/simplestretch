@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { View, StyleSheet, Image, Text, Platform, Vibration, TouchableOpacity } from 'react-native';
 import Sound from 'react-native-sound';
+import KeepAwake from 'react-native-keep-awake';
 import { Actions } from 'react-native-router-flux';
 import TimerCountdown from 'react-native-timer-countdown';
 import { CardSection, Card, InfoButton } from './common';
@@ -129,6 +130,7 @@ class StretchScreen extends Component {
             );
         } return (
             <CardSection>
+                <KeepAwake />
                 <View style={{ justifyContent: 'center' }}>
                     <TimerCountdown
                         initialSecondsRemaining={this.decideSecondsRemaining() * 1000}
