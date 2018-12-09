@@ -8,7 +8,6 @@ const InfoButton = (props) => {
     return (
         <TouchableOpacity onPress={onPress} style={[btnStyle, props.style]}>
             <View style={{ marginTop: 8, flex: 1, justifyContent: 'flex-start' }}>
-
                 <Text
                     style={txtStyle}
                 >
@@ -33,7 +32,12 @@ const styles = {
     txtStyle: {
         fontSize: 30,
         alignSelf: 'center',
-        fontWeight: '200'
+        fontWeight: '200',
+        backgroundColor: colors.main,
+        padding: 10,
+        marginTop: -15,
+        borderRadius: 10,
+        overflow: 'hidden'
     },
     clickable: {
         color: colors.textClickable,

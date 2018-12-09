@@ -189,7 +189,7 @@ class StretchScreen extends Component {
                                 fontSize: 30,
                                 alignSelf: 'center',
                                 fontWeight: '200',
-                                color: colors.textMedium
+                                color: colors.textDark
                             }}
                         >
                             {this.renderCenterText()}
