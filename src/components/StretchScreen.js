@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { View, StyleSheet, Image, Text, Platform, Vibration, TouchableOpacity } from 'react-native';
+import { ScrollView, View, StyleSheet, Image, Text, Platform, Vibration, TouchableOpacity } from 'react-native';
 import Sound from 'react-native-sound';
 import KeepAwake from 'react-native-keep-awake';
 import { Actions } from 'react-native-router-flux';
@@ -115,11 +115,13 @@ class StretchScreen extends Component {
                         <Text style={styles.modalTextTappable}>Advanced</Text>
                     </TouchableOpacity>
                 </View >
-                <Text style={styles.modalText}>
-                    {
-                        `\n${stretchList[this.props.stretchId].desc.Beginner}`
-                    }
-                </Text>
+                <ScrollView>
+                    <Text style={styles.modalText}>
+                        {
+                            `\n${stretchList[this.props.stretchId].desc.Beginner}`
+                        }
+                    </Text>
+                </ScrollView>
             </CardSection>
         );
     }
